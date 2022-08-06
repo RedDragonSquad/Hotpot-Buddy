@@ -2,7 +2,10 @@ name: ESLint
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
+    defaults:
+      run:
+        working-directory: ./client
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
