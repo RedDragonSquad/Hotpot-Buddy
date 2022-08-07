@@ -11,5 +11,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.workingDirectories": ["./client"]
+  "eslint.workingDirectories": ["./client"],
+  "files.eol": "\n",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }
