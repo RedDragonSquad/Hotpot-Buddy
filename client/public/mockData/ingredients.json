@@ -1,0 +1,12 @@
+[
+  {
+    "name": "beef",
+    "cookTime": 30,
+    "category": "meat"
+  },
+  {
+    "name": "lamb",
+    "cookTime": 50,
+    "category": "meat"
+  }
+]
