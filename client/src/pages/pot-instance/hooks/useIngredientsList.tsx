@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Ingredient } from 'pages/pot-instance/models';
 
 const useIngredientsList = (): {
-  loading: Boolean;
+  loading: boolean;
   data: Ingredient[];
 } => {
   const [loading, setLoading] = useState(true);
