@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import './App.css';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         >
           Learn React
         </a>
+        {/* TODO: remove later, testing material-ui */}
+        <Button variant="contained">Contained</Button>
       </header>
     </div>
   );
