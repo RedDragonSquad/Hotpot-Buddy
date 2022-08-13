@@ -1,0 +1,35 @@
+
+[
+    {
+      "name": "beef",
+      "cookTime": 30,
+      "category": "meat"
+    },
+    {
+      "name": "lamb",
+      "cookTime": 50,
+      "category": "meat"
+    },
+    {
+      "name": "shrimp_dumpling",
+      "cookTime": 300,
+      "category": "meat",
+      "timeInfo1": {
+        "startTime": "1000"
+      },
+      "timeInfo2": {
+        "startTime": "1030"
+      }
+    },
+    {
+      "name": "beef_dumpling",
+      "cookTime": 300,
+      "category": "meat",
+      "timeInfo1": {
+        "startTime": "1000"
+      },
+      "timeInfo2": {
+        "startTime": "1030"
+      }
+    }
+]
