@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import FoodTimerList from 'pages/pot-instance/FoodTimerList';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         </a>
         {/* TODO: remove later, testing material-ui */}
         <Button variant="contained">Contained</Button>
+        <FoodTimerList />
       </header>
     </div>
   );
