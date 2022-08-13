@@ -3,13 +3,12 @@
 import { FC, useState } from 'react';
 import uniqid from 'uniqid';
 import FoodTimer from 'pages/pot-instance/FoodTimer';
-// import myJson from 'pages/pot-instance/timerIngredients.json';
 
 interface FoodTimerObj {
-  uniqid?: string;
-  name?: string;
-  cookTime?: number;
-  category?: string;
+  id: string;
+  name: string;
+  cookTime: number;
+  category: string;
 }
 
 const FoodTimerList: FC = () => {
@@ -17,17 +16,17 @@ const FoodTimerList: FC = () => {
 
   const addFoodTimer = (item: string) => {
     const tempObj = foodTimerObj;
-    let addObj: FoodTimerObj = {};
+    let addObj = {} as FoodTimerObj;
     if (item === 'meat') {
       addObj = {
-        uniqid: uniqid(),
+        id: uniqid(),
         name: 'beef',
         cookTime: 30,
         category: 'meat'
       };
     } else if (item === 'veggie') {
       addObj = {
-        uniqid: uniqid(),
+        id: uniqid(),
         name: 'mushroom',
         cookTime: 60,
         category: 'veggie'
@@ -38,10 +37,22 @@ const FoodTimerList: FC = () => {
     console.log(tempObj);
   };
 
+  const deleteFoodTimer = (uniqueid: string) => {
+    const tempObj = foodTimerObj;
+    tempObj.splice(
+      tempObj.findIndex((item) => item.id === uniqueid),
+      1
+    );
+    useFoodTimerObj([...tempObj]);
+  };
+
   return (
     <div>
       Test
-      <FoodTimer foodTimerObj={foodTimerObj} />
+      <FoodTimer
+        foodTimerObj={foodTimerObj}
+        deleteFoodTimer={deleteFoodTimer}
+      />
       <button
         type="button"
         onClick={() => {

@@ -4,21 +4,29 @@ import { FC } from 'react';
 
 interface Props {
   foodTimerObj: {
-    uniqid?: string;
-    name?: string;
-    cookTime?: number;
-    category?: string;
+    id: string;
+    name: string;
+    cookTime: number;
+    category: string;
   }[];
+  deleteFoodTimer: (uniqid: string) => void;
 }
 
-const FoodTimer: FC<Props> = ({ foodTimerObj }) => {
+const FoodTimer: FC<Props> = ({ foodTimerObj, deleteFoodTimer }) => {
   return (
     <div>
       {Object.entries(foodTimerObj).map(([key, value]) => {
         return (
           <div key={key}>
-            {key} {value.name} {value.cookTime} {value.category}
-            <button type="button"> Delete </button>
+            {key} {value.name} {value.cookTime} {value.category} {value.id}
+            <button
+              type="button"
+              onClick={() => {
+                deleteFoodTimer(value.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}
