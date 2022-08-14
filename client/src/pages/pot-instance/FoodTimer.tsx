@@ -10,15 +10,38 @@ interface Props {
     category: string;
   }[];
   deleteFoodTimer: (uniqid: string) => void;
+  hotPotDuration: number;
 }
 
-const FoodTimer: FC<Props> = ({ foodTimerObj, deleteFoodTimer }) => {
+const FoodTimer: FC<Props> = ({
+  foodTimerObj,
+  deleteFoodTimer,
+  hotPotDuration
+}) => {
   return (
     <div>
+      Duration: {hotPotDuration};
       {Object.entries(foodTimerObj).map(([key, value]) => {
+        // const [timeLeft, useTimeLeft] = useState(value.cookTime);
+        // const [elapsedTime, useElapsedTime] = useState(value.cookTime);
+
+        // const handleTime = () => {
+        //   if (timeLeft !== 0) {
+        //     useElapsedTime(elapsedTime + 1);
+        //     useTimeLeft(timeLeft - 1);
+        //   }
+        // };
+
+        // useEffect(() => {
+        //   const timer = setInterval(handleTime, 1000);
+
+        //   return () => clearInterval(timer);
+        // });
+
         return (
           <div key={key}>
-            {key} {value.name} {value.cookTime} {value.category} {value.id}
+            {key} {value.name} {value.category} {value.id}
+            Start Time: {value.cookTime}
             <button
               type="button"
               onClick={() => {
