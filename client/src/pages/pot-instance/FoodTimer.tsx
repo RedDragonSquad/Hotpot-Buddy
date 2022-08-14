@@ -41,7 +41,7 @@ const FoodTimer: FC<Props> = ({
         return (
           <div key={key}>
             {key} {value.name} {value.category} {value.id}
-            Start Time: {value.cookTime}
+            Cook Time: {value.cookTime}
             <button
               type="button"
               onClick={() => {
