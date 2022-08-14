@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
+import { Stack } from '@mui/system';
 import { FC } from 'react';
 
 interface Props {
@@ -19,25 +20,9 @@ const FoodTimer: FC<Props> = ({
   hotPotDuration
 }) => {
   return (
-    <div>
+    <Stack spacing={2}>
       Duration: {hotPotDuration};
       {Object.entries(foodTimerObj).map(([key, value]) => {
-        // const [timeLeft, useTimeLeft] = useState(value.cookTime);
-        // const [elapsedTime, useElapsedTime] = useState(value.cookTime);
-
-        // const handleTime = () => {
-        //   if (timeLeft !== 0) {
-        //     useElapsedTime(elapsedTime + 1);
-        //     useTimeLeft(timeLeft - 1);
-        //   }
-        // };
-
-        // useEffect(() => {
-        //   const timer = setInterval(handleTime, 1000);
-
-        //   return () => clearInterval(timer);
-        // });
-
         return (
           <div key={key}>
             {key} {value.name} {value.category} {value.id}
@@ -53,7 +38,7 @@ const FoodTimer: FC<Props> = ({
           </div>
         );
       })}
-    </div>
+    </Stack>
   );
 };
 
