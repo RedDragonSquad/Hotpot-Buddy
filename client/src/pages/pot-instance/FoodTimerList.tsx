@@ -51,10 +51,8 @@ const FoodTimerList: FC = () => {
     useHotPotDuration(hotPotDuration + 1);
     Object.entries(foodTimerObj).forEach(([key, value]) => {
       if (value.cookTime > 0) {
-        // eslint-disable-next-line prefer-const
-        let tempObj = foodTimerObj;
-        // eslint-disable-next-line prefer-const
-        let currentObj = foodTimerObj[parseInt(key, 10)];
+        const tempObj = foodTimerObj;
+        const currentObj = foodTimerObj[parseInt(key, 10)];
         currentObj.cookTime -= 1;
         tempObj.splice(parseInt(key, 10), 1, currentObj);
         useFoodTimerObj(tempObj);
