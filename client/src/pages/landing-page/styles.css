@@ -1,0 +1,56 @@
+#selectPotContainer{
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(20,20,20,0.8);
+    z-index: 1;
+    position: absolute;
+}
+
+#selectPot{
+    border: black solid 1px;
+    width: 60vw;
+    height: 75vh;
+}
+
+#hotpotBackground{
+    object-fit: cover;
+    width: 60vw;
+    height: 75vh;
+    position: absolute;
+    z-index: -1;
+}
+
+.selectItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5em;
+    padding-bottom: 1em;
+}
+
+.brothItem{
+    padding-top: 3.5em
+}
+
+.selectType{
+    display: flex;
+    gap: 1em;
+    padding-top: 0.5em;
+    font-size: 0.7em;
+}
+
+.broth{
+    padding-left: 1em;
+    padding-right: 1em;
+    gap: 0em;
+}
+
+#startBtn{
+    margin-top: 2em;
+}
