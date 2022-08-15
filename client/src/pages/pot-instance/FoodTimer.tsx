@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import { Stack } from '@mui/system';
 import { FC } from 'react';
+import { Stack, Button } from '@mui/material';
 
 interface Props {
   foodTimerObj: {
@@ -20,24 +20,28 @@ const FoodTimer: FC<Props> = ({
   hotPotDuration
 }) => {
   return (
-    <Stack spacing={2}>
-      Duration: {hotPotDuration};
+    <Stack id="foodTimerContainer" spacing={1}>
       {Object.entries(foodTimerObj).map(([key, value]) => {
         return (
-          <div key={key}>
-            {key} {value.name} {value.category} {value.id}
-            Cook Time: {value.cookTime}
-            <button
+          <div className="timerComponent" key={key}>
+            <div className="timerInformation">
+              <div className="itemName">{value.name}</div>
+              <div>Time Remaining: {value.cookTime}s</div>
+            </div>
+            <Button
               type="button"
+              variant="contained"
+              className="removeBtn"
               onClick={() => {
                 deleteFoodTimer(value.id);
               }}
             >
-              Delete
-            </button>
+              Remove
+            </Button>
           </div>
         );
       })}
+      Hot Pot Duration: {hotPotDuration}
     </Stack>
   );
 };
