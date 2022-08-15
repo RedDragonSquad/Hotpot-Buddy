@@ -3,6 +3,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
+import AddIcon from '@mui/icons-material/Add';
 import FoodTimer from 'pages/pot-instance/FoodTimer';
 
 interface FoodTimerObj {
@@ -69,7 +70,7 @@ const FoodTimerList: FC = () => {
   return (
     <div>
       <Button id="addItemBtn" variant="contained">
-        Add Item
+        <AddIcon />
       </Button>
       <FoodTimer
         foodTimerObj={foodTimerObj}
