@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 
 import { FC, useState, useEffect } from 'react';
+import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import FoodTimer from 'pages/pot-instance/FoodTimer';
 
@@ -67,7 +68,9 @@ const FoodTimerList: FC = () => {
 
   return (
     <div>
-      Test
+      <Button id="addItemBtn" variant="contained">
+        Add Item
+      </Button>
       <FoodTimer
         foodTimerObj={foodTimerObj}
         deleteFoodTimer={deleteFoodTimer}
@@ -76,7 +79,7 @@ const FoodTimerList: FC = () => {
       <button
         type="button"
         onClick={() => {
-          addFoodTimer('meat', 5);
+          addFoodTimer('meat', Math.floor(Math.random() * 30) + 1);
         }}
       >
         add meat
@@ -84,11 +87,14 @@ const FoodTimerList: FC = () => {
       <button
         type="button"
         onClick={() => {
-          addFoodTimer('veggie', 60);
+          addFoodTimer('veggie', Math.floor(Math.random() * 60) + 1);
         }}
       >
         add veggie
       </button>
+      <Button id="endSession" variant="contained">
+        End Session
+      </Button>
     </div>
   );
 };
