@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+/* FoodTimer */
+#foodTimerContainer{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: black solid 1px;
+}
+
+.timerComponent{
+  border: black solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(20,20,20, 0.6);
+  width: 75vw;
+  height: 1.5em;
+  font-size: 0.6em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.itemName{
+  width: 5em;
+  text-align: start;
+}
+
+.timerInformation{
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.removeBtn{
+  height: 2em;
+  width: 5em;
+}
