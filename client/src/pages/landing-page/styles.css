@@ -13,14 +13,14 @@
 
 #selectPot{
     border: black solid 1px;
-    width: 60vw;
-    height: 75vh;
+    width: 680px;
+    height: 1020px;
 }
 
 #hotpotBackground{
     object-fit: cover;
-    width: 60vw;
-    height: 75vh;
+    width: 680px;
+    height: 1020px;
     position: absolute;
     z-index: -1;
 }
@@ -30,27 +30,47 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 5em;
-    padding-bottom: 1em;
+    padding-top: 175px;
+    padding-bottom: 35px;
+    font-size: 40px;
 }
 
 .brothItem{
-    padding-top: 3.5em
+    padding-top: 75px;
 }
 
 .selectType{
     display: flex;
-    gap: 1em;
-    padding-top: 0.5em;
-    font-size: 0.7em;
+    gap: 25px;
+    padding-top: 12px;
+    font-size: 20px;
+}
+
+.flavors{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
 }
 
 .broth{
-    padding-left: 1em;
-    padding-right: 1em;
-    gap: 0em;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 20px;
+}
+
+.soupbases{
+    width: 100px;
 }
 
 #startBtn{
-    margin-top: 2em;
+    margin-top: 25px;
+}
+
+.hoverItem{
+    border: transparent 1px solid;
+}
+
+.hoverItem:hover{
+    border: beige 1px solid;
 }
