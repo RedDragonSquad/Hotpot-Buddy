@@ -2,6 +2,8 @@
 /* eslint-disable react/function-component-definition */
 import { FC } from 'react';
 import { Stack, Button } from '@mui/material';
+import RemoveIcon from '@mui/icons-material/Remove';
+import './styles.css';
 
 interface Props {
   foodTimerObj: {
@@ -36,7 +38,7 @@ const FoodTimer: FC<Props> = ({
                 deleteFoodTimer(value.id);
               }}
             >
-              Remove
+              <RemoveIcon fontSize="small" />
             </Button>
           </div>
         );
