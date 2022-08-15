@@ -1,5 +1,5 @@
+// global disable below
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/bb84abc793435a25398160242c5f2870b83b72ca/docs/rules/click-events-have-key-events.md
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 /* eslint-disable react/function-component-definition */
