@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,6 +18,10 @@ const FoodTimerList: FC = () => {
   const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);
   const [hotPotDuration, useHotPotDuration] = useState(0);
 
+  const [potType, usePotType] = useState(0);
+  const [hotpotStart, useHotpotStart] = useState(false);
+
+  // functions to update the foodtimers
   const addFoodTimer = (item: string, cookTimes: number) => {
     const tempObj = foodTimerObj;
     let addObj = {} as FoodTimerObj;
@@ -63,14 +67,27 @@ const FoodTimerList: FC = () => {
     });
   };
 
-  useEffect(() => {
-    const timer = setInterval(handleTime, 1000);
-    return () => clearInterval(timer);
-  });
+  if (hotpotStart) {
+    setInterval(handleTime, 1000);
+  }
+
+  // functions to update the landing page
+  const updatePotType = (type: number) => {
+    usePotType(type);
+    console.log(potType);
+  };
+
+  const startHotPot = () => {
+    useHotpotStart(true);
+  };
 
   return (
     <>
-      <LandingPage />
+      <LandingPage
+        updatePotType={updatePotType}
+        startHotPot={startHotPot}
+        hotpotStart={hotpotStart}
+      />
       <div>
         <Button id="addItemBtn" variant="contained">
           <AddIcon />
