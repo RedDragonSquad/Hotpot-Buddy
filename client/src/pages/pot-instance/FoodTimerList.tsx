@@ -34,8 +34,8 @@ const FoodTimerList: FC = () => {
       };
     }
     tempObj.push(addObj);
+    tempObj.sort((a, b) => a.cookTime - b.cookTime);
     useFoodTimerObj([...tempObj]);
-    console.log(tempObj);
   };
 
   const deleteFoodTimer = (uniqueid: string) => {
