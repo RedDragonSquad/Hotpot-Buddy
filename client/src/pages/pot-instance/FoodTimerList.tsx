@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import AddIcon from '@mui/icons-material/Add';
@@ -67,9 +67,13 @@ const FoodTimerList: FC = () => {
     });
   };
 
-  if (hotpotStart) {
-    setInterval(handleTime, 1000);
-  }
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (hotpotStart) {
+      const timer = setInterval(handleTime, 1000);
+      return () => clearInterval(timer);
+    }
+  });
 
   // functions to update the landing page
   const updatePotType = (type: number) => {
