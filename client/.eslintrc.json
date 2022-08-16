@@ -42,6 +42,17 @@
     "import/no-unresolved": 1,
     "no-console": 1, // Means warning
     "prettier/prettier": 2, // Means error
+    "react/function-component-definition": [
+      1,
+      {
+        "namedComponents": [
+          "function-declaration",
+          "function-expression",
+          "arrow-function"
+        ],
+        "unnamedComponents": ["function-expression", "arrow-function"]
+      }
+    ],
     "react/jsx-filename-extension": [
       2,
       {
