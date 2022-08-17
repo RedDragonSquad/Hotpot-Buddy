@@ -1,12 +1,9 @@
-// global disable below
+// to decide if global disable is required
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-
-/* eslint-disable react/function-component-definition */
-/* eslint-disable arrow-body-style */
 import { Button } from '@mui/material';
 import { FC } from 'react';
-import './styles.css';
+import styles from './styles.module.css';
 
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
@@ -23,22 +20,22 @@ const LandingPage: FC<Props> = ({
 }) => {
   if (!hotpotStart) {
     return (
-      <div id="selectPotContainer">
+      <div id={styles.selectPotContainer}>
         <img
-          id="hotpotBackground"
+          id={styles.hotpotBackground}
           // eslint-disable-next-line global-require
           src={require('./assets/hotPotBackground.jpg')}
           alt="hotpot background"
         />
-        <div id="selectPot">
-          <div className="selectItem">
+        <div id={styles.selectPot}>
+          <div className={styles.selectItem}>
             Select Pot Type
-            <div className="selectType">
+            <div className={styles.selectType}>
               <div
                 onClick={() => {
                   updatePotType(1);
                 }}
-                className="flavors hoverItem"
+                className={styles.flavors}
               >
                 One Flavor
               </div>
@@ -46,7 +43,7 @@ const LandingPage: FC<Props> = ({
                 onClick={() => {
                   updatePotType(2);
                 }}
-                className="flavors hoverItem"
+                className={styles.flavors}
               >
                 Two Flavors
               </div>
@@ -54,26 +51,26 @@ const LandingPage: FC<Props> = ({
                 onClick={() => {
                   updatePotType(4);
                 }}
-                className="flavors hoverItem"
+                className={styles.flavors}
               >
                 Four Flavors
               </div>
             </div>
           </div>
-          <div className="selectItem brothItem">
+          <div className={styles.selectBroth}>
             Select Broth
-            <div className="selectType broth">
-              <div className="soupbases hoverItem">Sukiyaki Soupbase</div>
-              <div className="soupbases hoverItem">Spicy Soupbase</div>
-              <div className="soupbases hoverItem">Ox Bone Soupbase</div>
-              <div className="soupbases hoverItem">Tomato Soupbase</div>
+            <div className={styles.selectBrothType}>
+              <div className={styles.soupbases}>Sukiyaki Soupbase</div>
+              <div className={styles.soupbases}>Spicy Soupbase</div>
+              <div className={styles.soupbases}>Ox Bone Soupbase</div>
+              <div className={styles.soupbases}>Tomato Soupbase</div>
             </div>
           </div>
           <Button
             onClick={startHotPot}
             type="button"
             variant="contained"
-            id="startBtn"
+            id={styles.startHotPotBtn}
           >
             Start
           </Button>
@@ -81,8 +78,7 @@ const LandingPage: FC<Props> = ({
       </div>
     );
   }
-  // eslint-disable-next-line react/jsx-no-useless-fragment
-  return <></>;
+  return <>error</>;
 };
 
 export default LandingPage;

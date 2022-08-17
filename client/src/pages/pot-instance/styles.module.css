@@ -1,0 +1,12 @@
+/* FoodTimerList */
+#addItemBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#endSession {
+  position: absolute;
+  bottom: 10px;
+  left: 47vw;
+}

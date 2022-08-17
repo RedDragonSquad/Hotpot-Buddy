@@ -1,18 +1,13 @@
-/* eslint-disable react/function-component-definition */
-
-import { FC, useEffect, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import AddIcon from '@mui/icons-material/Add';
-import FoodTimer from 'pages/pot-instance/FoodTimer';
-import LandingPage from 'pages/landing-page/LandingPage';
-
-interface FoodTimerObj {
-  id: string;
-  name: string;
-  cookTime: number;
-  category: string;
-}
+import FoodTimer from 'pages/pot-instance/components/FoodTimer/FoodTimer';
+import { FoodTimerObj } from 'pages/pot-instance/models';
+/* to remove when merge with addingredient feature */
+import TempAddIngredient from 'pages/pot-instance/temp-component/TempAddIngredient';
+import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
+import styles from './styles.module.css';
 
 const FoodTimerList: FC = () => {
   const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);
@@ -21,30 +16,26 @@ const FoodTimerList: FC = () => {
   const [potType, usePotType] = useState(0);
   const [hotpotStart, useHotpotStart] = useState(false);
 
-  // functions to update the foodtimers
-  const addFoodTimer = (item: string, cookTimes: number) => {
+  // function takes in the item sent by the parent when an igredient is added to the pot and updates the foodtimerObj state
+  const addFoodTimer = (
+    itemName: string,
+    cookTimes: number,
+    itemCategory: string
+  ) => {
     const tempObj = foodTimerObj;
     let addObj = {} as FoodTimerObj;
-    if (item === 'meat') {
-      addObj = {
-        id: uniqid(),
-        name: 'beef',
-        cookTime: cookTimes,
-        category: 'meat'
-      };
-    } else if (item === 'veggie') {
-      addObj = {
-        id: uniqid(),
-        name: 'mushroom',
-        cookTime: cookTimes,
-        category: 'veggie'
-      };
-    }
+    addObj = {
+      id: uniqid(),
+      name: itemName,
+      cookTime: cookTimes,
+      category: itemCategory
+    };
     tempObj.push(addObj);
     tempObj.sort((a, b) => a.cookTime - b.cookTime);
     useFoodTimerObj([...tempObj]);
   };
 
+  // function deletes the specific object within the foodTimerObj
   const deleteFoodTimer = (uniqueid: string) => {
     const tempObj = foodTimerObj;
     tempObj.splice(
@@ -54,6 +45,7 @@ const FoodTimerList: FC = () => {
     useFoodTimerObj([...tempObj]);
   };
 
+  // function that handles the timer countdown for each object in foodTimerObj. timer stops when the counter reaches 0. counter is read from cookTime
   const handleTime = () => {
     useHotPotDuration(hotPotDuration + 1);
     Object.entries(foodTimerObj).forEach(([key, value]) => {
@@ -67,6 +59,7 @@ const FoodTimerList: FC = () => {
     });
   };
 
+  // starts hotpot timer when the "start" button is selected. Can update to when an ingredient gets added in the future.
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (hotpotStart) {
@@ -93,7 +86,7 @@ const FoodTimerList: FC = () => {
         hotpotStart={hotpotStart}
       />
       <div>
-        <Button id="addItemBtn" variant="contained">
+        <Button id={styles.addItemBtn} variant="contained">
           <AddIcon />
         </Button>
         <FoodTimer
@@ -101,23 +94,9 @@ const FoodTimerList: FC = () => {
           deleteFoodTimer={deleteFoodTimer}
           hotPotDuration={hotPotDuration}
         />
-        <button
-          type="button"
-          onClick={() => {
-            addFoodTimer('meat', Math.floor(Math.random() * 30) + 1);
-          }}
-        >
-          add meat
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            addFoodTimer('veggie', Math.floor(Math.random() * 60) + 1);
-          }}
-        >
-          add veggie
-        </button>
-        <Button id="endSession" variant="contained">
+        {/* to remove when merge with addingredient feature */}
+        <TempAddIngredient addFoodTimer={addFoodTimer} />
+        <Button id={styles.endSession} variant="contained">
           End Session
         </Button>
       </div>
