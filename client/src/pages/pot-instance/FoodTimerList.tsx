@@ -1,17 +1,9 @@
-/* eslint-disable react/function-component-definition */
-
 import { FC, useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import AddIcon from '@mui/icons-material/Add';
 import FoodTimer from 'pages/pot-instance/FoodTimer';
-
-interface FoodTimerObj {
-  id: string;
-  name: string;
-  cookTime: number;
-  category: string;
-}
+import { FoodTimerObj } from 'pages/pot-instance/models';
 
 const FoodTimerList: FC = () => {
   const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);
