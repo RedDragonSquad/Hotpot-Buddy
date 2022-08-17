@@ -8,5 +8,15 @@
     "name": "lamb",
     "cookTime": 50,
     "category": "meat"
+  },
+  {
+    "name": "corn",
+    "cookTime": 100,
+    "category": "vegetable"
+  },
+  {
+    "name": "shrimp",
+    "cookTime": 15,
+    "category": "seafood"
   }
 ]
