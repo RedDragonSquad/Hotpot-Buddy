@@ -42,6 +42,7 @@
     "import/no-unresolved": 1,
     "no-console": 1, // Means warning
     "prettier/prettier": 2, // Means error
+    "arrow-body-style": 0,
     "react/function-component-definition": [
       1,
       {
