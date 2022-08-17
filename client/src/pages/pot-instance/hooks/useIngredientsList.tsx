@@ -3,10 +3,10 @@ import { Ingredient } from 'pages/pot-instance/models';
 
 const useIngredientsList = (): {
   loading: boolean;
-  data: Ingredient[];
+  ingredients: Ingredient[];
 } => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchIngredients = () => {
     fetch('./mockData/ingredients.json', {
@@ -16,9 +16,16 @@ const useIngredientsList = (): {
       }
     })
       .then((res) => res.json())
+      // TODO: handle api error case
       .then((jsonData) => {
+        setIngredients(jsonData);
+      })
+      .catch((err) => {
+        // TODO: Better error handling for FE
+        console.error('Failed to fetch Ingredients', err);
+      })
+      .finally(() => {
         setLoading(false);
-        setData(jsonData);
       });
   };
 
@@ -26,7 +33,7 @@ const useIngredientsList = (): {
     fetchIngredients();
   }, []);
 
-  return { loading, data };
+  return { loading, ingredients };
 };
 
 export default useIngredientsList;
