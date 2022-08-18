@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 /* eslint-disable react/function-component-definition */
 
 import { FC, useEffect, useState } from 'react';
+=======
+import { FC, useState, useEffect } from 'react';
+>>>>>>> 649f3c1 (updated code with comments from code review)
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import AddIcon from '@mui/icons-material/Add';
 import FoodTimer from 'pages/pot-instance/FoodTimer';
+<<<<<<< HEAD
 import LandingPage from 'pages/landing-page/LandingPage';
 
 interface FoodTimerObj {
@@ -13,6 +18,9 @@ interface FoodTimerObj {
   cookTime: number;
   category: string;
 }
+=======
+import { FoodTimerObj } from 'pages/pot-instance/models';
+>>>>>>> 649f3c1 (updated code with comments from code review)
 
 const FoodTimerList: FC = () => {
   const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);

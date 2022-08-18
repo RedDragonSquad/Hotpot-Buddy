@@ -1,17 +1,11 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/function-component-definition */
 import { FC } from 'react';
 import { Stack, Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import './styles.css';
+import { FoodTimerObj } from 'pages/pot-instance/models';
 
 interface Props {
-  foodTimerObj: {
-    id: string;
-    name: string;
-    cookTime: number;
-    category: string;
-  }[];
+  foodTimerObj: FoodTimerObj[];
   deleteFoodTimer: (uniqid: string) => void;
   hotPotDuration: number;
 }
@@ -33,7 +27,7 @@ const FoodTimer: FC<Props> = ({
             <Button
               type="button"
               variant="contained"
-              className="removeBtn"
+              className="removerTimer"
               onClick={() => {
                 deleteFoodTimer(value.id);
               }}
