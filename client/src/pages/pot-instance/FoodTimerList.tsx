@@ -6,11 +6,15 @@ import FoodTimer from 'pages/pot-instance/components/FoodTimer/FoodTimer';
 import { FoodTimerObj } from 'pages/pot-instance/models';
 /* to remove when merge with addingredient feature */
 import TempAddIngredient from 'pages/pot-instance/temp-component/TempAddIngredient';
+import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import styles from './styles.module.css';
 
 const FoodTimerList: FC = () => {
   const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);
   const [hotPotDuration, useHotPotDuration] = useState(0);
+
+  const [potType, usePotType] = useState(0);
+  const [hotpotStart, useHotpotStart] = useState(false);
 
   // function takes in the item sent by the parent when an igredient is added to the pot and updates the foodtimerObj state
   const addFoodTimer = (
@@ -55,27 +59,48 @@ const FoodTimerList: FC = () => {
     });
   };
 
+  // starts hotpot timer when the "start" button is selected. Can update to when an ingredient gets added in the future.
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const timer = setInterval(handleTime, 1000);
-    return () => clearInterval(timer);
-  });
+    if (hotpotStart) {
+      const timer = setInterval(handleTime, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [hotpotStart, handleTime]);
+
+  // functions to update the landing page
+  const updatePotType = (type: number) => {
+    usePotType(type);
+    console.log(potType);
+  };
+
+  const startHotPot = () => {
+    useHotpotStart(true);
+  };
 
   return (
-    <div>
-      <Button id={styles.addItemBtn} variant="contained">
-        <AddIcon />
-      </Button>
-      <FoodTimer
-        foodTimerObj={foodTimerObj}
-        deleteFoodTimer={deleteFoodTimer}
-        hotPotDuration={hotPotDuration}
+    <>
+      <LandingPage
+        updatePotType={updatePotType}
+        startHotPot={startHotPot}
+        hotpotStart={hotpotStart}
       />
-      {/* to remove when merge with addingredient feature */}
-      <TempAddIngredient addFoodTimer={addFoodTimer} />
-      <Button id={styles.endSession} variant="contained">
-        End Session
-      </Button>
-    </div>
+      <div>
+        <Button id={styles.addItemBtn} variant="contained">
+          <AddIcon />
+        </Button>
+        <FoodTimer
+          foodTimerObj={foodTimerObj}
+          deleteFoodTimer={deleteFoodTimer}
+          hotPotDuration={hotPotDuration}
+        />
+        {/* to remove when merge with addingredient feature */}
+        <TempAddIngredient addFoodTimer={addFoodTimer} />
+        <Button id={styles.endSession} variant="contained">
+          End Session
+        </Button>
+      </div>
+    </>
   );
 };
 
