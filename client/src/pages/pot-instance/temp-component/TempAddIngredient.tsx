@@ -20,22 +20,19 @@ const TempAddIngredient: FC<Props> = ({ addFoodTimer }) => {
   };
 
   return (
-    <>
-      <Button
-        variant="contained"
-        onClick={() => {
-          randomIngredientGen();
-          addFoodTimer(
-            ingredients[randomIngredient].name,
-            ingredients[randomIngredient].cookTime,
-            ingredients[randomIngredient].category
-          );
-        }}
-      >
-        Add random ingredient btn
-      </Button>
-      <div>Test 2</div>
-    </>
+    <Button
+      variant="contained"
+      onClick={() => {
+        randomIngredientGen();
+        addFoodTimer(
+          ingredients[randomIngredient].name,
+          ingredients[randomIngredient].cookTime,
+          ingredients[randomIngredient].category
+        );
+      }}
+    >
+      Add random ingredient btn
+    </Button>
   );
 };
 
