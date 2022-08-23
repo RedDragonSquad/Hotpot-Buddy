@@ -1,6 +1,3 @@
-// to decide if global disable is required
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Button } from '@mui/material';
 import { FC } from 'react';
 import styles from './styles.module.css';
@@ -31,39 +28,50 @@ const LandingPage: FC<Props> = ({
           <div className={styles.selectItem}>
             Select Pot Type
             <div className={styles.selectType}>
-              <div
+              <button
+                type="button"
                 onClick={() => {
                   updatePotType(1);
                 }}
                 className={styles.flavors}
               >
                 One Flavor
-              </div>
-              <div
+              </button>
+              <button
+                type="button"
                 onClick={() => {
                   updatePotType(2);
                 }}
                 className={styles.flavors}
               >
                 Two Flavors
-              </div>
-              <div
+              </button>
+              <button
+                type="button"
                 onClick={() => {
                   updatePotType(4);
                 }}
                 className={styles.flavors}
               >
                 Four Flavors
-              </div>
+              </button>
             </div>
           </div>
           <div className={styles.selectBroth}>
             Select Broth
             <div className={styles.selectBrothType}>
-              <div className={styles.soupbases}>Sukiyaki Soupbase</div>
-              <div className={styles.soupbases}>Spicy Soupbase</div>
-              <div className={styles.soupbases}>Ox Bone Soupbase</div>
-              <div className={styles.soupbases}>Tomato Soupbase</div>
+              <button type="button" className={styles.soupbases}>
+                Sukiyaki Soupbase
+              </button>
+              <button type="button" className={styles.soupbases}>
+                Spicy Soupbase
+              </button>
+              <button type="button" className={styles.soupbases}>
+                Ox Bone Soupbase
+              </button>
+              <button type="button" className={styles.soupbases}>
+                Tomato Soupbase
+              </button>
             </div>
           </div>
           <Button
