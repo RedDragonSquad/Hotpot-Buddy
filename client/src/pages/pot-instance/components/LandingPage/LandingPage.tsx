@@ -16,7 +16,7 @@ const LandingPage: FC<Props> = ({
   hotpotStart
 }) => {
   if (hotpotStart) {
-    return <>error</>;
+    return <> </>;
   }
   return (
     <div id={styles.selectPotContainer}>
