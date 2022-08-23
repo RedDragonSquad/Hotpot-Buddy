@@ -22,8 +22,7 @@ const LandingPage: FC<Props> = ({
     <div id={styles.selectPotContainer}>
       <img
         id={styles.hotpotBackground}
-        // eslint-disable-next-line global-require
-        src={require('./assets/hotPotBackground.jpg')}
+        src={`${process.env.PUBLIC_URL}/assets/hotPotBackground.jpg`}
         alt="hotpot background"
       />
       <div id={styles.selectPot}>
