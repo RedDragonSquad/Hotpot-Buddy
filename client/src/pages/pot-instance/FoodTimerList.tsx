@@ -66,7 +66,7 @@ const FoodTimerList: FC = () => {
       const timer = setInterval(handleTime, 1000);
       return () => clearInterval(timer);
     }
-  }, [hotpotStart]);
+  });
 
   // functions to update the landing page
   const updatePotType = (type: number) => {
