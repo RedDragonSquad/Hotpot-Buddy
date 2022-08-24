@@ -1,13 +1,22 @@
 import { Button, Drawer } from '@mui/material';
 import { useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
 import IngredientsList from 'pages/pot-instance/components/IngredientsList/IngredientsList';
+import { AddFoodTimer } from 'pages/pot-instance/models';
+import styles from './styles.module.css';
 
-const AddIngredients = () => {
+const AddIngredients = ({ addFoodTimer }: AddFoodTimer) => {
   const [drawerOpen, toggleDrawer] = useState(false);
 
   return (
     <>
-      <Button onClick={() => toggleDrawer(!drawerOpen)}>OPEN ME</Button>
+      <Button
+        id={styles.addItemBtn}
+        variant="contained"
+        onClick={() => toggleDrawer(!drawerOpen)}
+      >
+        <AddIcon />
+      </Button>
       {/* Drawer is built on MUI Pager allowing us to scale the component  through its props eventhough Drawer doesn't expose them */}
       <Drawer
         PaperProps={{
@@ -17,7 +26,7 @@ const AddIngredients = () => {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <IngredientsList />
+        <IngredientsList addFoodTimer={addFoodTimer} drawerOpen={drawerOpen} />
       </Drawer>
     </>
   );

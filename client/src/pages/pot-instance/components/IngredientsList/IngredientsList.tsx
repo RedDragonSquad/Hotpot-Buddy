@@ -7,22 +7,42 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import _ from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import useIngredientsList from 'pages/pot-instance/hooks';
-import { Ingredient } from 'pages/pot-instance/models';
 import { useDebounce } from 'utils';
+import { Ingredient } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
-const IngredientsList = () => {
+interface Props {
+  addFoodTimer: (
+    itemName: string,
+    cookTimes: number,
+    itemCategory: string
+  ) => void;
+  drawerOpen: boolean;
+}
+
+const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
   // Local cart that will be forwarded to parent
   const [ingredientsCart, setIngredientsCart] = useState<Ingredient[]>([]);
 
   // Debounce the items selected in the cart before sending it to parent.
-  const debouncedCart = useDebounce(ingredientsCart, 5000);
+  const debouncedCart = useDebounce(ingredientsCart, 2000);
   useEffect(() => {
-    // TODO: Integrate with a parent page.
-    console.log(debouncedCart);
+    debouncedCart.forEach((ingredient) => {
+      addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
+    });
+    // resets the cart
+    setIngredientsCart([]);
   }, [debouncedCart]);
+
+  // When drawercloses, force push the ingredients from the cart to pot, bypassing the debounce function
+  useEffect(() => {
+    ingredientsCart.forEach((ingredient) => {
+      addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
+    });
+    setIngredientsCart([]);
+  }, [drawerOpen]);
 
   const { loading, ingredients } = useIngredientsList();
   if (loading) {
