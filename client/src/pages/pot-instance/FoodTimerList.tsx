@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import uniqid from 'uniqid';
-import AddIcon from '@mui/icons-material/Add';
 import FoodTimer from 'pages/pot-instance/components/FoodTimer/FoodTimer';
 import { FoodTimerObj } from 'pages/pot-instance/models';
 /* to remove when merge with addingredient feature */
 import TempAddIngredient from 'pages/pot-instance/temp-component/TempAddIngredient';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
+import AddIngredients from 'pages/pot-instance/components/AddIngredients/AddIngredients';
 import styles from './styles.module.css';
 
 const FoodTimerList: FC = () => {
@@ -86,9 +86,7 @@ const FoodTimerList: FC = () => {
         hotpotStart={hotpotStart}
       />
       <div>
-        <Button id={styles.addItemBtn} variant="contained">
-          <AddIcon />
-        </Button>
+        <AddIngredients />
         <FoodTimer
           foodTimerObj={foodTimerObj}
           deleteFoodTimer={deleteFoodTimer}
