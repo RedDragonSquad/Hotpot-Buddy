@@ -25,7 +25,6 @@ const IngredientsList = ({ addFoodTimer }: AddFoodTimer) => {
     });
     // resets the cart
     setIngredientsCart([]);
-    console.log(debouncedCart);
   }, [debouncedCart]);
 
   const { loading, ingredients } = useIngredientsList();

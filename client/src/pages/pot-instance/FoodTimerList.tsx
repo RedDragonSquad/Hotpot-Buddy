@@ -3,8 +3,6 @@ import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import FoodTimer from 'pages/pot-instance/components/FoodTimer/FoodTimer';
 import { FoodTimerObj } from 'pages/pot-instance/models';
-/* to remove when merge with addingredient feature */
-// import TempAddIngredient from 'pages/pot-instance/temp-component/TempAddIngredient';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import AddIngredients from 'pages/pot-instance/components/AddIngredients/AddIngredients';
 import styles from './styles.module.css';
@@ -92,8 +90,6 @@ const FoodTimerList: FC = () => {
           deleteFoodTimer={deleteFoodTimer}
           hotPotDuration={hotPotDuration}
         />
-        {/* to remove when merge with addingredient feature */}
-        {/* <TempAddIngredient addFoodTimer={addFoodTimer} /> */}
         <Button id={styles.endSession} variant="contained">
           End Session
         </Button>
