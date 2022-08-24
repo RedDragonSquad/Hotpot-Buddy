@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Hotpot-Buddy/static/css/main.073c9b0a.css",
-    "main.js": "/Hotpot-Buddy/static/js/main.ede12e5a.js",
+    "main.css": "/Hotpot-Buddy/static/css/main.509a34a2.css",
+    "main.js": "/Hotpot-Buddy/static/js/main.8b1eb936.js",
     "index.html": "/Hotpot-Buddy/index.html",
-    "main.073c9b0a.css.map": "/Hotpot-Buddy/static/css/main.073c9b0a.css.map",
-    "main.ede12e5a.js.map": "/Hotpot-Buddy/static/js/main.ede12e5a.js.map"
+    "main.509a34a2.css.map": "/Hotpot-Buddy/static/css/main.509a34a2.css.map",
+    "main.8b1eb936.js.map": "/Hotpot-Buddy/static/js/main.8b1eb936.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.ede12e5a.js"
+    "static/css/main.509a34a2.css",
+    "static/js/main.8b1eb936.js"
   ]
 }
