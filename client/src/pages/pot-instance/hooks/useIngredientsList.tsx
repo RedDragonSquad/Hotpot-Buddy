@@ -20,9 +20,8 @@ const useIngredientsList = (): {
       .then((jsonData) => {
         setIngredients(jsonData);
       })
-      .catch((err) => {
+      .catch(() => {
         // TODO: Better error handling for FE
-        console.error('Failed to fetch Ingredients', err);
       })
       .finally(() => {
         setLoading(false);

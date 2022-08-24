@@ -69,7 +69,6 @@ const FoodTimerList: FC = () => {
   // functions to update the landing page
   const updatePotType = (type: number) => {
     usePotType(type);
-    console.log(potType);
   };
 
   const startHotPot = () => {
@@ -93,6 +92,7 @@ const FoodTimerList: FC = () => {
         <Button id={styles.endSession} variant="contained">
           End Session
         </Button>
+        <div>{potType}</div>
       </div>
     </>
   );
