@@ -9,18 +9,22 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import useIngredientsList from 'pages/pot-instance/hooks';
-import { Ingredient } from 'pages/pot-instance/models';
 import { useDebounce } from 'utils';
+import { AddFoodTimer, Ingredient } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
-const IngredientsList = () => {
+const IngredientsList = ({ addFoodTimer }: AddFoodTimer) => {
   // Local cart that will be forwarded to parent
   const [ingredientsCart, setIngredientsCart] = useState<Ingredient[]>([]);
 
   // Debounce the items selected in the cart before sending it to parent.
-  const debouncedCart = useDebounce(ingredientsCart, 5000);
+  const debouncedCart = useDebounce(ingredientsCart, 2000);
   useEffect(() => {
-    // TODO: Integrate with a parent page.
+    debouncedCart.forEach((ingredient) => {
+      addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
+    });
+    // resets the cart
+    setIngredientsCart([]);
     console.log(debouncedCart);
   }, [debouncedCart]);
 

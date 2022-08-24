@@ -2,9 +2,10 @@ import { Button, Drawer } from '@mui/material';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import IngredientsList from 'pages/pot-instance/components/IngredientsList/IngredientsList';
+import { AddFoodTimer } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
-const AddIngredients = () => {
+const AddIngredients = ({ addFoodTimer }: AddFoodTimer) => {
   const [drawerOpen, toggleDrawer] = useState(false);
 
   return (
@@ -25,7 +26,7 @@ const AddIngredients = () => {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <IngredientsList />
+        <IngredientsList addFoodTimer={addFoodTimer} />
       </Drawer>
     </>
   );

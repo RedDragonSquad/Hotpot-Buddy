@@ -10,3 +10,11 @@ export interface FoodTimerObj {
   cookTime: number;
   category: string;
 }
+
+export interface AddFoodTimer {
+  addFoodTimer: (
+    itemName: string,
+    cookTimes: number,
+    itemCategory: string
+  ) => void;
+}
