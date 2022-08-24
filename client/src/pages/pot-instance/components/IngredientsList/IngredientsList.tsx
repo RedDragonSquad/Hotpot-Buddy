@@ -7,13 +7,22 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import _ from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import useIngredientsList from 'pages/pot-instance/hooks';
 import { useDebounce } from 'utils';
-import { AddFoodTimer, Ingredient } from 'pages/pot-instance/models';
+import { Ingredient } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
-const IngredientsList = ({ addFoodTimer }: AddFoodTimer) => {
+interface Props {
+  addFoodTimer: (
+    itemName: string,
+    cookTimes: number,
+    itemCategory: string
+  ) => void;
+  drawerOpen: boolean;
+}
+
+const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
   // Local cart that will be forwarded to parent
   const [ingredientsCart, setIngredientsCart] = useState<Ingredient[]>([]);
 
@@ -26,6 +35,13 @@ const IngredientsList = ({ addFoodTimer }: AddFoodTimer) => {
     // resets the cart
     setIngredientsCart([]);
   }, [debouncedCart]);
+
+  useEffect(() => {
+    ingredientsCart.forEach((ingredient) => {
+      addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
+    });
+    setIngredientsCart([]);
+  }, [drawerOpen]);
 
   const { loading, ingredients } = useIngredientsList();
   if (loading) {

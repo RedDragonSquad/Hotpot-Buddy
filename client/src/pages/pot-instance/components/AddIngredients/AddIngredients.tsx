@@ -26,7 +26,7 @@ const AddIngredients = ({ addFoodTimer }: AddFoodTimer) => {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <IngredientsList addFoodTimer={addFoodTimer} />
+        <IngredientsList addFoodTimer={addFoodTimer} drawerOpen={drawerOpen} />
       </Drawer>
     </>
   );
