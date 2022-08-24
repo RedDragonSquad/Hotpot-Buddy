@@ -3,7 +3,6 @@
   "name": "hotpot-buddy-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Keerush.github.io/Hotpot-Buddy",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -15,6 +14,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "lodash": "^4.17.21",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
