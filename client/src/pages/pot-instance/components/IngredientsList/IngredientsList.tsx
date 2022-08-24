@@ -36,6 +36,7 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
     setIngredientsCart([]);
   }, [debouncedCart]);
 
+  // When drawercloses, force push the ingredients from the cart to pot, bypassing the debounce function
   useEffect(() => {
     ingredientsCart.forEach((ingredient) => {
       addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
