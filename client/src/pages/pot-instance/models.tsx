@@ -4,7 +4,7 @@ export interface Ingredient {
   cookTime: number;
 }
 
-export interface FoodTimerObj {
+export interface PotContent {
   id: string;
   name: string;
   cookTime: number;

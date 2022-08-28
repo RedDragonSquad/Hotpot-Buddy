@@ -1,18 +1,17 @@
 import { FC, useState, useEffect } from 'react';
-import { Button } from '@mui/material';
 import uniqid from 'uniqid';
 import FoodTimer from 'pages/pot-instance/components/FoodTimer/FoodTimer';
-import { FoodTimerObj } from 'pages/pot-instance/models';
-import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
+import { PotContent } from 'pages/pot-instance/models';
 import AddIngredients from 'pages/pot-instance/components/AddIngredients/AddIngredients';
-import styles from './styles.module.css';
 
-const FoodTimerList: FC = () => {
-  const [foodTimerObj, useFoodTimerObj] = useState<FoodTimerObj[]>([]);
+interface Props {
+  hotpotStart: boolean;
+  addCookedPot: (food: PotContent) => void;
+}
+
+const FoodTimerList: FC<Props> = ({ hotpotStart, addCookedPot }) => {
+  const [potContent, usePotContent] = useState<PotContent[]>([]);
   const [hotPotDuration, useHotPotDuration] = useState(0);
-
-  const [potType, usePotType] = useState(0);
-  const [hotpotStart, useHotpotStart] = useState(false);
 
   // function takes in the item sent by the parent when an igredient is added to the pot and updates the foodtimerObj state
   const addFoodTimer = (
@@ -20,8 +19,8 @@ const FoodTimerList: FC = () => {
     cookTimes: number,
     itemCategory: string
   ) => {
-    const tempObj = foodTimerObj;
-    let addObj = {} as FoodTimerObj;
+    const tempObj = potContent;
+    let addObj = {} as PotContent;
     addObj = {
       id: uniqid(),
       name: itemName,
@@ -30,29 +29,31 @@ const FoodTimerList: FC = () => {
     };
     tempObj.push(addObj);
     tempObj.sort((a, b) => a.cookTime - b.cookTime);
-    useFoodTimerObj([...tempObj]);
+    usePotContent([...tempObj]);
   };
 
-  // function deletes the specific object within the foodTimerObj
+  // function deletes the specific object within the potContent, and updates cookedPot in potInstance
   const deleteFoodTimer = (uniqueid: string) => {
-    const tempObj = foodTimerObj;
+    const tempObj = potContent;
+    addCookedPot(tempObj[tempObj.findIndex((item) => item.id === uniqueid)]);
+
     tempObj.splice(
       tempObj.findIndex((item) => item.id === uniqueid),
       1
     );
-    useFoodTimerObj([...tempObj]);
+    usePotContent([...tempObj]);
   };
 
   // function that handles the timer countdown for each object in foodTimerObj. timer stops when the counter reaches 0. counter is read from cookTime
   const handleTime = () => {
     useHotPotDuration(hotPotDuration + 1);
-    Object.entries(foodTimerObj).forEach(([key, value]) => {
+    Object.entries(potContent).forEach(([key, value]) => {
       if (value.cookTime > 0) {
-        const tempObj = foodTimerObj;
-        const currentObj = foodTimerObj[parseInt(key, 10)];
+        const tempObj = potContent;
+        const currentObj = potContent[parseInt(key, 10)];
         currentObj.cookTime -= 1;
         tempObj.splice(parseInt(key, 10), 1, currentObj);
-        useFoodTimerObj(tempObj);
+        usePotContent(tempObj);
       }
     });
   };
@@ -66,34 +67,14 @@ const FoodTimerList: FC = () => {
     }
   }, [hotpotStart, handleTime]);
 
-  // functions to update the landing page
-  const updatePotType = (type: number) => {
-    usePotType(type);
-  };
-
-  const startHotPot = () => {
-    useHotpotStart(true);
-  };
-
   return (
     <>
-      <LandingPage
-        updatePotType={updatePotType}
-        startHotPot={startHotPot}
-        hotpotStart={hotpotStart}
+      <AddIngredients addFoodTimer={addFoodTimer} />
+      <FoodTimer
+        potContent={potContent}
+        deleteFoodTimer={deleteFoodTimer}
+        hotPotDuration={hotPotDuration}
       />
-      <div>
-        <AddIngredients addFoodTimer={addFoodTimer} />
-        <FoodTimer
-          foodTimerObj={foodTimerObj}
-          deleteFoodTimer={deleteFoodTimer}
-          hotPotDuration={hotPotDuration}
-        />
-        <Button id={styles.endSession} variant="contained">
-          End Session
-        </Button>
-        <div>{potType}</div>
-      </div>
     </>
   );
 };
