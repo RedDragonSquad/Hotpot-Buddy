@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { Stack, Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { PotContent } from 'pages/pot-instance/models';
+import { PotContent, HotPotDuration } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 interface Props {
   potContent: PotContent[];
   deleteFoodTimer: (uniqid: string) => void;
-  hotPotDuration: number;
+  hotPotDuration: HotPotDuration;
 }
 
 const FoodTimer: FC<Props> = ({
@@ -36,7 +36,7 @@ const FoodTimer: FC<Props> = ({
         </div>
       );
     })}
-    Hot Pot Duration: {hotPotDuration}
+    Hot Pot Duration: {hotPotDuration.hotPotElapsedTime}
   </Stack>
 );
 

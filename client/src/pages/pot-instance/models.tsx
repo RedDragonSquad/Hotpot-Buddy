@@ -22,3 +22,8 @@ export interface AddFoodTimer {
     remainingTime: number
   ) => void;
 }
+
+export interface HotPotDuration {
+  hotPotStartTime: number;
+  hotPotElapsedTime: number;
+}
