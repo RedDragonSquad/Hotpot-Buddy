@@ -10,14 +10,6 @@ const PotInstance: FC = () => {
   const [hotpotStart, useHotpotStart] = useState(false);
   const [cookedPotContent, useCookedPotContent] = useState<PotContent[]>([]);
 
-  // TO DO:
-  // cookedPotContent should be in this page.
-  // have it also get added to potContent via addFoodtimer. It can handle the movement there on its own.
-  // Once it gets REMOVED from the potContent, have it callback and add to cookedpotcontent here.
-  // That way the timer does not affect this component.
-  // Can create components that use the state of cookedPotContent
-  // like stats + rating + details + end screen etc.
-
   // functions to update the landing page
   const updatePotType = (type: number) => {
     usePotType(type);
