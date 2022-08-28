@@ -26,8 +26,13 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
   // Local cart that will be forwarded to parent
   const [ingredientsCart, setIngredientsCart] = useState<Ingredient[]>([]);
 
+  const addIngredientsCart = () => {
+    const currentTime = Math.floor(Date.now() / 1000);
+    console.log(currentTime);
+  };
+
   // Debounce the items selected in the cart before sending it to parent.
-  const debouncedCart = useDebounce(ingredientsCart, 2000);
+  const debouncedCart = useDebounce(ingredientsCart, 4000);
   useEffect(() => {
     debouncedCart.forEach((ingredient) => {
       addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
@@ -42,6 +47,7 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
       addFoodTimer(ingredient.name, ingredient.cookTime, ingredient.category);
     });
     setIngredientsCart([]);
+    addIngredientsCart();
   }, [drawerOpen]);
 
   const { loading, ingredients } = useIngredientsList();
