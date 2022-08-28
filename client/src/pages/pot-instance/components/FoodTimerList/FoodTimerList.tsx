@@ -16,19 +16,23 @@ const FoodTimerList: FC<Props> = ({ hotpotStart, addCookedPot }) => {
   // function takes in the item sent by the parent when an igredient is added to the pot and updates the foodtimerObj state
   const addFoodTimer = (
     itemName: string,
-    cookTimes: number,
-    itemCategory: string
+    itemCategory: string,
+    startTime: number,
+    finishTime: number,
+    remainingTime: number
   ) => {
     const tempObj = potContent;
     let addObj = {} as PotContent;
     addObj = {
       id: uniqid(),
       name: itemName,
-      cookTime: cookTimes,
-      category: itemCategory
+      category: itemCategory,
+      currentTime: startTime,
+      endTime: finishTime,
+      timeLeft: remainingTime
     };
     tempObj.push(addObj);
-    tempObj.sort((a, b) => a.cookTime - b.cookTime);
+    tempObj.sort((a, b) => a.currentTime - b.currentTime);
     usePotContent([...tempObj]);
   };
 
@@ -48,10 +52,11 @@ const FoodTimerList: FC<Props> = ({ hotpotStart, addCookedPot }) => {
   const handleTime = () => {
     useHotPotDuration(hotPotDuration + 1);
     Object.entries(potContent).forEach(([key, value]) => {
-      if (value.cookTime > 0) {
+      if (value.timeLeft > 0) {
         const tempObj = potContent;
         const currentObj = potContent[parseInt(key, 10)];
-        currentObj.cookTime -= 1;
+        currentObj.currentTime = Math.floor(Date.now() / 1000);
+        currentObj.timeLeft = currentObj.endTime - currentObj.currentTime;
         tempObj.splice(parseInt(key, 10), 1, currentObj);
         usePotContent(tempObj);
       }

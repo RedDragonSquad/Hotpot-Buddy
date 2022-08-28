@@ -21,7 +21,7 @@ const FoodTimer: FC<Props> = ({
         <div className={styles.timerComponent} key={key}>
           <div className={styles.timerInformation}>
             <div className={styles.itemName}>{value.name}</div>
-            <div>Time Remaining: {value.cookTime}s</div>
+            <div>Time Remaining: {value.timeLeft}s</div>
           </div>
           <Button
             type="button"
