@@ -70,6 +70,9 @@ const FoodTimerList: FC<Props> = ({ hotpotStart, addCookedPot }) => {
         const currentObj = potContent[parseInt(key, 10)];
         currentObj.currentTime = Math.floor(Date.now() / 1000);
         currentObj.timeLeft = currentObj.endTime - currentObj.currentTime;
+        if (currentObj.timeLeft < 0) {
+          currentObj.timeLeft = 0;
+        }
         tempObj.splice(parseInt(key, 10), 1, currentObj);
         usePotContent(tempObj);
       }
