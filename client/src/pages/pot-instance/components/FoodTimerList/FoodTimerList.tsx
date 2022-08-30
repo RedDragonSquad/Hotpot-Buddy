@@ -54,7 +54,6 @@ const FoodTimerList: FC<Props> = ({ hotpotStart, addCookedPot }) => {
 
   const handleTime = () => {
     // function that updates the hotpotduration timer based on current time.
-
     const tempHotPotCurrent = Math.floor(Date.now() / 1000);
     const newElapsedTime = tempHotPotCurrent - hotPotDuration.hotPotStartTime;
     const tempHotPotObj = {
