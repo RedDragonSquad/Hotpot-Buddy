@@ -1,9 +1,6 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
-import PotView, {
-  PotViewState
-} from 'pages/pot-instance/components/PotView/PotView';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
@@ -49,6 +46,8 @@ const PotInstance: FC = () => {
       >
         End Session
       </Button>
+      {/* to remove: temporary component to hold the cooked items list */}
+      <TestContainer cookedPotContent={cookedPotContent} />
     </>
   );
 };
