@@ -4,17 +4,26 @@ export interface Ingredient {
   cookTime: number;
 }
 
-export interface FoodTimerObj {
+export interface PotContent {
   id: string;
   name: string;
-  cookTime: number;
   category: string;
+  currentTime: number;
+  endTime: number;
+  timeLeft: number;
 }
 
 export interface AddFoodTimer {
   addFoodTimer: (
     itemName: string,
-    cookTimes: number,
-    itemCategory: string
+    itemCategory: string,
+    startTime: number,
+    finishTime: number,
+    remainingTime: number
   ) => void;
+}
+
+export interface HotPotDuration {
+  hotPotStartTime: number;
+  hotPotElapsedTime: number;
 }

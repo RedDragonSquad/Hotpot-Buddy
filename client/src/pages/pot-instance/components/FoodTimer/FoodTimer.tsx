@@ -1,27 +1,27 @@
 import { FC } from 'react';
 import { Stack, Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { FoodTimerObj } from 'pages/pot-instance/models';
+import { PotContent, HotPotDuration } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 interface Props {
-  foodTimerObj: FoodTimerObj[];
+  potContent: PotContent[];
   deleteFoodTimer: (uniqid: string) => void;
-  hotPotDuration: number;
+  hotPotDuration: HotPotDuration;
 }
 
 const FoodTimer: FC<Props> = ({
-  foodTimerObj,
+  potContent,
   deleteFoodTimer,
   hotPotDuration
 }) => (
   <Stack id={styles.foodTimerContainer} spacing={1}>
-    {Object.entries(foodTimerObj).map(([key, value]) => {
+    {Object.entries(potContent).map(([key, value]) => {
       return (
         <div className={styles.timerComponent} key={key}>
           <div className={styles.timerInformation}>
             <div className={styles.itemName}>{value.name}</div>
-            <div>Time Remaining: {value.cookTime}s</div>
+            <div>Time Remaining: {value.timeLeft}s</div>
           </div>
           <Button
             type="button"
@@ -36,7 +36,7 @@ const FoodTimer: FC<Props> = ({
         </div>
       );
     })}
-    Hot Pot Duration: {hotPotDuration}
+    Hot Pot Duration: {hotPotDuration.hotPotElapsedTime}
   </Stack>
 );
 

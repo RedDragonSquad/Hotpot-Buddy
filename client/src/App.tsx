@@ -1,11 +1,11 @@
-import FoodTimerList from 'pages/pot-instance/FoodTimerList';
+import PotInstance from 'pages/pot-instance/PotInstance';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <FoodTimerList />
+        <PotInstance />
       </header>
     </div>
   );
