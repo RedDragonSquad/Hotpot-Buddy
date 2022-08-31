@@ -47,23 +47,11 @@ const LandingPage: FC<Props> = ({
             >
               Two Flavors
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                updatePotType(4);
-              }}
-              className={styles.flavors}
-            >
-              Four Flavors
-            </button>
           </div>
         </div>
         <div className={styles.selectBroth}>
           Select Broth
           <div className={styles.selectBrothType}>
-            <button type="button" className={styles.soupbases}>
-              Sukiyaki Soupbase
-            </button>
             <button type="button" className={styles.soupbases}>
               Spicy Soupbase
             </button>
