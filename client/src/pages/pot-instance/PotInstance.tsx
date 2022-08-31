@@ -8,17 +8,11 @@ import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
-  const [potType, usePotType] = useState(0);
-  const [hotpotStart, setHotpotStart] = useState(false);
-  const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
-
-  // functions to update the landing page
-  const updatePotType = (type: number) => {
-    usePotType(type);
-  };
+  const [hotpotStart, useHotpotStart] = useState(false);
+  const [cookedPotContent, useCookedPotContent] = useState<PotContent[]>([]);
 
   const startHotPot = () => {
-    setHotpotStart(true);
+    useHotpotStart(true);
   };
 
   const endHotPotSession = () => {
@@ -32,15 +26,9 @@ const PotInstance: FC = () => {
 
   return (
     <>
-      <LandingPage
-        updatePotType={updatePotType}
-        startHotPot={startHotPot}
-        hotpotStart={hotpotStart}
-      />
-      <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
-
+      <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
+      <FoodTimerList hotpotStart={hotpotStart} addCookedPot={addCookedPot} />
       <div>
-        <div>Pot Type: {potType} Flavor </div>
         <img
           className={styles.leftPot}
           src={`${process.env.PUBLIC_URL}/assets/spicy.svg`}
@@ -48,7 +36,7 @@ const PotInstance: FC = () => {
         />
         <img
           className={styles.rightPot}
-          src={`${process.env.PUBLIC_URL}/assets/porkbone.svg`}
+          src={`${process.env.PUBLIC_URL}/assets/bone.svg`}
           alt="rightPot"
         />
       </div>

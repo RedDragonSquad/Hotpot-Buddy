@@ -1,20 +1,32 @@
 import { Button } from '@mui/material';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './styles.module.css';
 
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
 interface Props {
-  updatePotType: (type: number) => void;
   startHotPot: () => void;
   hotpotStart: boolean;
 }
 
-const LandingPage: FC<Props> = ({
-  updatePotType,
-  startHotPot,
-  hotpotStart
-}) => {
+const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
+  const [potType, usePotType] = useState(0);
+  const [soupbase, useSoupbase] = useState(['']);
+
+  // functions to update the landing page
+  const selectPotType = (type: number) => {
+    usePotType(type);
+  };
+
+  const selectSoupBase = (type: string) => {
+    const soupbaseTemp = soupbase;
+    if (soupbaseTemp.length >= potType) {
+      soupbaseTemp.shift();
+    }
+    soupbaseTemp.push(type);
+    useSoupbase([...soupbaseTemp]);
+  };
+
   if (hotpotStart) {
     return <> </>;
   }
@@ -32,7 +44,7 @@ const LandingPage: FC<Props> = ({
             <button
               type="button"
               onClick={() => {
-                updatePotType(1);
+                selectPotType(1);
               }}
               className={styles.flavors}
             >
@@ -41,7 +53,7 @@ const LandingPage: FC<Props> = ({
             <button
               type="button"
               onClick={() => {
-                updatePotType(2);
+                selectPotType(2);
               }}
               className={styles.flavors}
             >
@@ -52,13 +64,25 @@ const LandingPage: FC<Props> = ({
         <div className={styles.selectBroth}>
           Select Soupbase
           <div className={styles.selectBrothType}>
-            <button type="button" className={styles.soupbases}>
+            <button
+              onClick={() => selectSoupBase('spicy')}
+              type="button"
+              className={styles.soupbases}
+            >
               Spicy Soupbase
             </button>
-            <button type="button" className={styles.soupbases}>
+            <button
+              onClick={() => selectSoupBase('bone')}
+              type="button"
+              className={styles.soupbases}
+            >
               Ox Bone Soupbase
             </button>
-            <button type="button" className={styles.soupbases}>
+            <button
+              onClick={() => selectSoupBase('tomato')}
+              type="button"
+              className={styles.soupbases}
+            >
               Tomato Soupbase
             </button>
           </div>
