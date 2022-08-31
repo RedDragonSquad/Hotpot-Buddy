@@ -8,13 +8,13 @@
 
 .rightPot {
   position: relative;
-  right: 48px;
+  right: 54px;
   transform: scaleY(-1) scaleX(-1);
 }
 
 .leftPot {
   position: relative;
-  left: 48px;
+  left: 54px;
 }
 
 .rightPot,
