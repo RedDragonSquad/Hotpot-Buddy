@@ -16,12 +16,23 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   // functions to update the landing page
   const selectPotType = (type: number) => {
     usePotType(type);
+    // queue for soupbase based on potType number
+    const soupbaseTemp = soupbase;
+    let i = soupbaseTemp.length;
+    while (i > type) {
+      soupbaseTemp.shift();
+      i -= 1;
+    }
+    useSoupbase([...soupbaseTemp]);
   };
 
+  // stores soupbase based on a queue datastructure depending on the length specified by potType
   const selectSoupBase = (type: string) => {
     const soupbaseTemp = soupbase;
-    if (soupbaseTemp.length >= potType) {
+    let i = soupbaseTemp.length;
+    while (i >= potType) {
       soupbaseTemp.shift();
+      i -= 1;
     }
     soupbaseTemp.push(type);
     useSoupbase([...soupbaseTemp]);
