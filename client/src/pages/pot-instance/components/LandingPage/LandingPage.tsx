@@ -50,7 +50,7 @@ const LandingPage: FC<Props> = ({
           </div>
         </div>
         <div className={styles.selectBroth}>
-          Select Broth
+          Select Soupbase
           <div className={styles.selectBrothType}>
             <button type="button" className={styles.soupbases}>
               Spicy Soupbase
