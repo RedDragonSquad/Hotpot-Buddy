@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
 interface Props {
-  startHotPot: () => void;
+  startHotPot: (soupbase: string[]) => void;
   hotpotStart: boolean;
 }
 
@@ -26,7 +26,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     useSoupbase([...soupbaseTemp]);
   };
 
-  // stores soupbase based on a queue datastructure depending on the length specified by potType
+  // stores soupbase based on a queue datastructure depending on the length specified by potType.
   const selectSoupBase = (type: string) => {
     const soupbaseTemp = soupbase;
     let i = soupbaseTemp.length;
@@ -99,7 +99,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
           </div>
         </div>
         <Button
-          onClick={startHotPot}
+          onClick={() => startHotPot(soupbase)}
           type="button"
           variant="contained"
           id={styles.startHotPotBtn}

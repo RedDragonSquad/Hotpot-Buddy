@@ -10,9 +10,15 @@ import styles from './styles.module.css';
 const PotInstance: FC = () => {
   const [hotpotStart, useHotpotStart] = useState(false);
   const [cookedPotContent, useCookedPotContent] = useState<PotContent[]>([]);
+  const [soupbase, useSoupbase] = useState(['']);
 
-  const startHotPot = () => {
+  const startHotPot = (newSoupbase: string[]) => {
     useHotpotStart(true);
+    const tempSoupbase = newSoupbase;
+    if (tempSoupbase.length < 2) {
+      tempSoupbase.push(tempSoupbase[0]);
+    }
+    useSoupbase(tempSoupbase);
   };
 
   const endHotPotSession = () => {
@@ -31,12 +37,12 @@ const PotInstance: FC = () => {
       <div>
         <img
           className={styles.leftPot}
-          src={`${process.env.PUBLIC_URL}/assets/spicy.svg`}
+          src={`${process.env.PUBLIC_URL}/assets/${soupbase[0]}.svg`}
           alt="leftPot"
         />
         <img
           className={styles.rightPot}
-          src={`${process.env.PUBLIC_URL}/assets/bone.svg`}
+          src={`${process.env.PUBLIC_URL}/assets/${soupbase[1]}.svg`}
           alt="rightPot"
         />
       </div>
