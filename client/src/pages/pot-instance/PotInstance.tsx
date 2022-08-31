@@ -37,11 +37,21 @@ const PotInstance: FC = () => {
         startHotPot={startHotPot}
         hotpotStart={hotpotStart}
       />
-
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
-      <div>Pot Type: {potType} Flavor </div>
-
+      <div>
+        <div>Pot Type: {potType} Flavor </div>
+        <img
+          className={styles.leftPot}
+          src={`${process.env.PUBLIC_URL}/assets/spicy.svg`}
+          alt="leftPot"
+        />
+        <img
+          className={styles.rightPot}
+          src={`${process.env.PUBLIC_URL}/assets/porkbone.svg`}
+          alt="rightPot"
+        />
+      </div>
       <Button
         id={styles.endSession}
         variant="contained"
