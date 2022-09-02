@@ -46,7 +46,9 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
-    setAlignment(newAlignment);
+    if (newAlignment !== null) {
+      setAlignment(newAlignment);
+    }
   };
 
   if (hotpotStart) {
