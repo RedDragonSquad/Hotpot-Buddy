@@ -64,10 +64,6 @@
   font-size: 1em;
 }
 
-.flavors:hover {
-  border: beige 1px solid;
-}
-
 .selectBrothType {
   display: flex;
   gap: 25px;

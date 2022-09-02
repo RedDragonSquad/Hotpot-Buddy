@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import * as React from 'react';
+import { Button, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { FC, useState } from 'react';
 import styles from './styles.module.css';
 
@@ -12,6 +13,8 @@ interface Props {
 const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const [potType, usePotType] = useState(0);
   const [soupbase, useSoupbase] = useState(['']);
+  // use to set the toggleButtons via mui
+  const [alignment, setAlignment] = useState('one');
 
   // functions to update the landing page
   const selectPotType = (type: number) => {
@@ -38,6 +41,14 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     useSoupbase([...soupbaseTemp]);
   };
 
+  // updates the toggle buttons for pot type
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string
+  ) => {
+    setAlignment(newAlignment);
+  };
+
   if (hotpotStart) {
     return <> </>;
   }
@@ -51,26 +62,32 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
       <div id={styles.selectPot}>
         <div className={styles.selectItem}>
           Select Pot Type
-          <div className={styles.selectType}>
-            <button
-              type="button"
+          <ToggleButtonGroup
+            color="primary"
+            exclusive
+            value={alignment}
+            onChange={handleChange}
+            className={styles.selectType}
+          >
+            <ToggleButton
+              value="one"
               onClick={() => {
                 selectPotType(1);
               }}
               className={styles.flavors}
             >
               One Flavor
-            </button>
-            <button
-              type="button"
+            </ToggleButton>
+            <ToggleButton
+              value="two"
               onClick={() => {
                 selectPotType(2);
               }}
               className={styles.flavors}
             >
               Two Flavors
-            </button>
-          </div>
+            </ToggleButton>
+          </ToggleButtonGroup>
         </div>
         <div className={styles.selectBroth}>
           Select Soupbase
