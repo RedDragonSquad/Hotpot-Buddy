@@ -11,18 +11,15 @@ interface Props {
 }
 
 const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
-  const [potType, usePotType] = useState(0);
+  const [potType, usePotType] = useState('1');
   const [soupbase, useSoupbase] = useState(['']);
-  // use to set the toggleButtons via mui
-  const [alignment, setAlignment] = useState('one');
 
   // functions to update the landing page
-  const selectPotType = (type: number) => {
-    usePotType(type);
+  const handlePotChange = (newAlignment: string) => {
     // queue for soupbase based on potType number
     const soupbaseTemp = soupbase;
     let i = soupbaseTemp.length;
-    while (i > type) {
+    while (i > parseInt(newAlignment, 10)) {
       soupbaseTemp.shift();
       i -= 1;
     }
@@ -33,7 +30,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const selectSoupBase = (type: string) => {
     const soupbaseTemp = soupbase;
     let i = soupbaseTemp.length;
-    while (i >= potType) {
+    while (i >= parseInt(potType, 10)) {
       soupbaseTemp.shift();
       i -= 1;
     }
@@ -41,13 +38,14 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     useSoupbase([...soupbaseTemp]);
   };
 
-  // updates the toggle buttons for pot type
+  // updates the toggle buttons for pot type. enforces that one is always toggled
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
     if (newAlignment !== null) {
-      setAlignment(newAlignment);
+      usePotType(newAlignment);
+      handlePotChange(newAlignment);
     }
   };
 
@@ -67,55 +65,47 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
           <ToggleButtonGroup
             color="primary"
             exclusive
-            value={alignment}
+            value={potType}
             onChange={handleChange}
             className={styles.selectType}
           >
-            <ToggleButton
-              value="one"
-              onClick={() => {
-                selectPotType(1);
-              }}
-              className={styles.flavors}
-            >
+            <ToggleButton value="1" className={styles.flavors}>
               One Flavor
             </ToggleButton>
-            <ToggleButton
-              value="two"
-              onClick={() => {
-                selectPotType(2);
-              }}
-              className={styles.flavors}
-            >
+            <ToggleButton value="2" className={styles.flavors}>
               Two Flavors
             </ToggleButton>
           </ToggleButtonGroup>
         </div>
         <div className={styles.selectBroth}>
           Select Soupbase
-          <div className={styles.selectBrothType}>
-            <button
+          <ToggleButtonGroup
+            color="primary"
+            value={soupbase}
+            className={styles.selectBrothType}
+          >
+            <ToggleButton
               onClick={() => selectSoupBase('spicy')}
-              type="button"
+              value="spicy"
               className={styles.soupbases}
             >
               Spicy Soupbase
-            </button>
-            <button
+            </ToggleButton>
+            <ToggleButton
               onClick={() => selectSoupBase('bone')}
-              type="button"
+              value="bone"
               className={styles.soupbases}
             >
               Ox Bone Soupbase
-            </button>
-            <button
+            </ToggleButton>
+            <ToggleButton
               onClick={() => selectSoupBase('tomato')}
-              type="button"
+              value="tomato"
               className={styles.soupbases}
             >
               Tomato Soupbase
-            </button>
-          </div>
+            </ToggleButton>
+          </ToggleButtonGroup>
         </div>
         <Button
           onClick={() => startHotPot(soupbase)}
