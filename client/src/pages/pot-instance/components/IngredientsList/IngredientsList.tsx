@@ -31,6 +31,10 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
   // Debounce the items selected in the cart before sending it to parent.
   const debouncedCart = useDebounce(ingredientsCart, 2000);
   useEffect(() => {
+    if (debouncedCart.length === 0) {
+      return;
+    }
+
     debouncedCart.forEach((ingredient) => {
       const startTime = Math.floor(Date.now() / 1000);
       const finishTime = startTime + ingredient.cookTime;
