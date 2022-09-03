@@ -11,10 +11,10 @@ interface Props {
 }
 
 const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
-  const [potType, usePotType] = useState('1');
-  const [soupbase, useSoupbase] = useState(['']);
+  const [potType, setPotType] = useState('1');
+  const [soupbase, setSoupbase] = useState(['bone']);
 
-  // functions to update the landing page
+  // function to update soupbase selection based on the number of pots selected
   const handlePotChange = (newAlignment: string) => {
     // queue for soupbase based on potType number
     const soupbaseTemp = soupbase;
@@ -23,19 +23,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
       soupbaseTemp.shift();
       i -= 1;
     }
-    useSoupbase([...soupbaseTemp]);
-  };
-
-  // stores soupbase based on a queue datastructure depending on the length specified by potType.
-  const selectSoupBase = (type: string) => {
-    const soupbaseTemp = soupbase;
-    let i = soupbaseTemp.length;
-    while (i >= parseInt(potType, 10)) {
-      soupbaseTemp.shift();
-      i -= 1;
-    }
-    soupbaseTemp.push(type);
-    useSoupbase([...soupbaseTemp]);
+    setSoupbase([...soupbaseTemp]);
   };
 
   // updates the toggle buttons for pot type. enforces that one is always toggled
@@ -44,8 +32,24 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     newAlignment: string
   ) => {
     if (newAlignment !== null) {
-      usePotType(newAlignment);
+      setPotType(newAlignment);
       handlePotChange(newAlignment);
+    }
+  };
+
+  const handleChangeSoup = (
+    event: React.MouseEvent<HTMLElement>,
+    type: string
+  ) => {
+    if (type !== null) {
+      const soupbaseTemp = soupbase;
+      let i = soupbaseTemp.length;
+      while (i >= parseInt(potType, 10)) {
+        soupbaseTemp.shift();
+        i -= 1;
+      }
+      soupbaseTemp.push(type);
+      setSoupbase([...soupbaseTemp]);
     }
   };
 
@@ -81,28 +85,19 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
           Select Soupbase
           <ToggleButtonGroup
             color="primary"
+            // exclusive is here for the onchange to return a single value rather than an array
+            exclusive
             value={soupbase}
+            onChange={handleChangeSoup}
             className={styles.selectBrothType}
           >
-            <ToggleButton
-              onClick={() => selectSoupBase('spicy')}
-              value="spicy"
-              className={styles.soupbases}
-            >
+            <ToggleButton value="spicy" className={styles.soupbases}>
               Spicy Soupbase
             </ToggleButton>
-            <ToggleButton
-              onClick={() => selectSoupBase('bone')}
-              value="bone"
-              className={styles.soupbases}
-            >
+            <ToggleButton value="bone" className={styles.soupbases}>
               Ox Bone Soupbase
             </ToggleButton>
-            <ToggleButton
-              onClick={() => selectSoupBase('tomato')}
-              value="tomato"
-              className={styles.soupbases}
-            >
+            <ToggleButton value="tomato" className={styles.soupbases}>
               Tomato Soupbase
             </ToggleButton>
           </ToggleButtonGroup>
