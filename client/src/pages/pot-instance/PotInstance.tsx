@@ -1,7 +1,5 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
-import uniqid from 'uniqid';
-import { AddIngredients } from 'pages/pot-instance/components';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import PotView, {
   PotViewState
@@ -12,7 +10,6 @@ import styles from './styles.module.css';
 const PotInstance: FC = () => {
   const [potType, usePotType] = useState(0);
   const [hotpotStart, setHotpotStart] = useState(false);
-  const [potContent, setPotContent] = useState<PotContent[]>([]);
   const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
 
   // functions to update the landing page
@@ -33,29 +30,6 @@ const PotInstance: FC = () => {
     setCookedPotContent([...cookedPotContent, ...foods]);
   };
 
-  // function takes in the item sent by the parent when an ingredients is added to the pot and updates the foodtimerObj state
-  const addFoodTimer = (
-    itemName: string,
-    itemCategory: string,
-    startTime: number,
-    finishTime: number,
-    remainingTime: number
-  ) => {
-    const tempObj = potContent;
-    let addObj = {} as PotContent;
-    addObj = {
-      id: uniqid(),
-      name: itemName,
-      category: itemCategory,
-      currentTime: startTime,
-      endTime: finishTime,
-      timeLeft: remainingTime
-    };
-    tempObj.push(addObj);
-    tempObj.sort((a, b) => a.currentTime - b.currentTime);
-    setPotContent([...tempObj]);
-  };
-
   return (
     <>
       <LandingPage
@@ -64,14 +38,7 @@ const PotInstance: FC = () => {
         hotpotStart={hotpotStart}
       />
 
-      <AddIngredients addFoodTimer={addFoodTimer} />
-
-      <PotView
-        state={PotViewState.Detailed}
-        potContent={potContent}
-        setPotContent={setPotContent}
-        addToCookedPot={addToCookedPot}
-      />
+      <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
       <div>Pot Type: {potType} Flavor </div>
 

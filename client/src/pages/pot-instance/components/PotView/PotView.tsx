@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import _ from 'lodash';
+import uniqid from 'uniqid';
 import { PotContent } from 'pages/pot-instance/models';
-import { FoodTimerList } from 'pages/pot-instance/components';
+import { FoodTimerList, AddIngredients } from 'pages/pot-instance/components';
 
 export enum PotViewState {
   Simple,
@@ -10,18 +11,39 @@ export enum PotViewState {
 
 interface Props {
   state: PotViewState;
-  potContent: PotContent[];
-  setPotContent: Dispatch<SetStateAction<PotContent[]>>;
   addToCookedPot: (foods: PotContent[]) => void;
 }
 
 // Data and timer handler for things in a pot instance.
-const PotView = ({
-  state,
-  potContent,
-  setPotContent,
-  addToCookedPot
-}: Props) => {
+const PotView = ({ state, addToCookedPot }: Props) => {
+  const [potContent, setPotContent] = useState<PotContent[]>([]);
+
+  // function takes in the item sent by the parent when an ingredients is added to the pot and updates the foodtimerObj state
+  const addFoodTimer = useCallback(
+    (
+      itemName: string,
+      itemCategory: string,
+      startTime: number,
+      finishTime: number,
+      remainingTime: number
+    ) => {
+      const tempObj = potContent;
+      let addObj = {} as PotContent;
+      addObj = {
+        id: uniqid(),
+        name: itemName,
+        category: itemCategory,
+        currentTime: startTime,
+        endTime: finishTime,
+        timeLeft: remainingTime
+      };
+      tempObj.push(addObj);
+      tempObj.sort((a, b) => a.currentTime - b.currentTime);
+      setPotContent([...tempObj]);
+    },
+    [setPotContent]
+  );
+
   const handleTime = () => {
     // function that handles the timer countdown for each object in foodTimerObj. timer stops when
     // the counter reaches 0. counter is read from the resulting calculation from endtime and current time
@@ -36,7 +58,11 @@ const PotView = ({
       (item) => item.timeLeft === 0
     );
 
-    addToCookedPot(cookedItems);
+    // Prevent additional rerenders if items are not cooked.
+    if (cookedItems.length > 0) {
+      addToCookedPot(cookedItems);
+    }
+
     setPotContent(updatedPotContent);
   };
 
@@ -58,7 +84,13 @@ const PotView = ({
       return <div>Simple View</div>;
     case PotViewState.Detailed:
       return (
-        <FoodTimerList potContent={potContent} setPotContent={setPotContent} />
+        <>
+          <AddIngredients addFoodTimer={addFoodTimer} />
+          <FoodTimerList
+            potContent={potContent}
+            setPotContent={setPotContent}
+          />
+        </>
       );
     default:
       return <div>Unknown View Selected</div>;
