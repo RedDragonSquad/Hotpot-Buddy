@@ -27,3 +27,9 @@ export interface HotPotDuration {
   hotPotStartTime: number;
   hotPotElapsedTime: number;
 }
+
+export interface ProgressData {
+  name: string;
+  value: number;
+  color: string;
+}
