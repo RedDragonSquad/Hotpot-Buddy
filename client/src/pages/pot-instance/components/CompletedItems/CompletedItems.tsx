@@ -9,7 +9,6 @@ interface Props {
 const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   return (
     <>
-      <div>test</div>
       {Object.entries(cookedPotContent).map(([key, value]) => {
         // date format 	12:00:00 AM was chosen. we can update to a custom format in the future if we choose. https://date-fns.org/v2.29.2/docs/format
         const formattedTime = format(new Date(value.endTime * 1000), 'pp');
