@@ -28,7 +28,6 @@ const ShowCompleted: FC<Props> = ({ cookedPotContent }) => {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <div>Test</div>
         <CompletedItems cookedPotContent={cookedPotContent} />
       </Drawer>
     </>
