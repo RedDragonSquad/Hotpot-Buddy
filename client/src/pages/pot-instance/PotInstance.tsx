@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
+import CompletedItems from 'pages/pot-instance/components/CompletedItems/CompletedItems';
 import PotView, {
   PotViewState
 } from 'pages/pot-instance/components/PotView/PotView';
@@ -41,6 +42,8 @@ const PotInstance: FC = () => {
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
       <div>Pot Type: {potType} Flavor </div>
+
+      <CompletedItems cookedPotContent={cookedPotContent} />
 
       <Button
         id={styles.endSession}

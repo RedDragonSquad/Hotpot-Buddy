@@ -67,7 +67,7 @@ const PotView = ({ state, addToCookedPot }: Props) => {
   };
 
   // starts hotpot timer when the "start" button is selected.
-  // Can update to when an ingredient gets added in the future.a a
+  // Can update to when an ingredient gets added in the future.
   useEffect(() => {
     // Pot timers will only start up if there are in progress items in the pot
     if (potContent.length === 0) {
