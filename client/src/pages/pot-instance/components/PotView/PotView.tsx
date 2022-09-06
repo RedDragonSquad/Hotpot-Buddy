@@ -38,10 +38,10 @@ const PotView = ({ state, addToCookedPot }: Props) => {
         timeLeft: remainingTime
       };
       tempObj.push(addObj);
-      tempObj.sort((a, b) => a.currentTime - b.currentTime);
+      tempObj.sort((a, b) => a.timeLeft - b.timeLeft);
       setPotContent([...tempObj]);
     },
-    [setPotContent]
+    [potContent, setPotContent]
   );
 
   const handleTime = () => {
