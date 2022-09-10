@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IconButton } from '@mui/material';
-import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
@@ -21,7 +21,7 @@ const FoodTimer: FC<Props> = ({ potItem, deleteFoodTimer }) => (
       color="primary"
       onClick={() => deleteFoodTimer(potItem.id)}
     >
-      <RemoveIcon fontSize="inherit" />
+      <DeleteIcon fontSize="small" />
     </IconButton>
   </div>
 );
