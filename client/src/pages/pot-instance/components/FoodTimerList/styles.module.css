@@ -1,9 +1,7 @@
 /* FoodTimer */
 #foodTimerContainer {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: black solid 1px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .timerComponent {

@@ -12,13 +12,15 @@ interface Props {
 const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   return (
     <>
+      {/* Stack component can be removed */}
+
       {Object.entries(cookedPotContent).map(([key, value]) => {
         const formattedTime = format(new Date(value.endTime * 1000), 'p');
         return (
           <div className={styles.timerComponent} key={key}>
             <div className={styles.timerInformation}>
               <div className={styles.itemName}>{value.name}</div>
-              <div>Finished at: {formattedTime} </div>
+              <div>Finished Cooking At: {formattedTime} </div>
             </div>
 
             <IconButton key={key} color="primary">

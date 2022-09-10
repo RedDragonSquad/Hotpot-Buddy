@@ -5,7 +5,7 @@ import PotView, {
   PotViewState
 } from 'pages/pot-instance/components/PotView/PotView';
 import { PotContent } from 'pages/pot-instance/models';
-import CompletedItems from 'pages/pot-instance/components/CompletedItems/CompletedItems';
+import DetailedContainer from 'pages/pot-instance/components/CompletedItems/DetailedContainer';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
@@ -37,7 +37,7 @@ const PotInstance: FC = () => {
     <>
       <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
 
-      <CompletedItems cookedPotContent={cookedPotContent} />
+      <DetailedContainer cookedPotContent={cookedPotContent} />
 
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
