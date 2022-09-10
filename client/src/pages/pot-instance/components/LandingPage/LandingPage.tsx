@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Button, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { FC, useState } from 'react';
 import styles from './styles.module.css';
-
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
 interface Props {
@@ -73,7 +72,11 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
             onChange={handleChange}
             className={styles.selectType}
           >
-            <ToggleButton value="1" className={styles.flavors}>
+            <ToggleButton
+              sx={{ background: 'lightgrey' }}
+              value="1"
+              className={styles.flavors}
+            >
               One Flavor
             </ToggleButton>
             <ToggleButton value="2" className={styles.flavors}>
@@ -84,7 +87,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
         <div className={styles.selectBroth}>
           Select Soupbase
           <ToggleButtonGroup
-            color="primary"
+            color="secondary"
             // exclusive is here for the onchange to return a single value rather than an array
             exclusive
             value={soupbase}
