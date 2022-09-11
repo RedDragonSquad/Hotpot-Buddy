@@ -12,8 +12,6 @@ interface Props {
 const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   return (
     <>
-      {/* Stack component can be removed */}
-
       {Object.entries(cookedPotContent).map(([key, value]) => {
         const formattedTime = format(new Date(value.endTime * 1000), 'p');
         return (
