@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
+import { filter } from 'lodash';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import PotView, {
   PotViewState
@@ -11,6 +12,8 @@ import styles from './styles.module.css';
 const PotInstance: FC = () => {
   const [hotpotStart, setHotpotStart] = useState(false);
   const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
+  // used for stats, finished item tracker etc.
+  const [finishedItems, setFinishedItems] = useState<PotContent[]>([]);
   const [soupbase, useSoupbase] = useState(['']);
 
   const startHotPot = (newSoupbase: string[]) => {
@@ -28,16 +31,27 @@ const PotInstance: FC = () => {
     setHotpotStart(false);
   };
 
-  // TODO: should we add time when item was completed to this?
   const addToCookedPot = (foods: PotContent[]) => {
     setCookedPotContent([...cookedPotContent, ...foods]);
+    setFinishedItems([...finishedItems, ...foods]);
+  };
+
+  const removeFromCookedPot = (uniqueid: string) => {
+    const newCookedPotContent = filter(
+      cookedPotContent,
+      (item) => item.id !== uniqueid
+    );
+    setCookedPotContent(newCookedPotContent);
   };
 
   return (
     <>
       <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
 
-      <DetailedContainer cookedPotContent={cookedPotContent} />
+      <DetailedContainer
+        cookedPotContent={cookedPotContent}
+        removeFromCookedPot={removeFromCookedPot}
+      />
 
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 

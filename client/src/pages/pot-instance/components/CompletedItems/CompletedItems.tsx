@@ -7,9 +7,13 @@ import styles from './styles.module.css';
 
 interface Props {
   cookedPotContent: PotContent[];
+  removeFromCookedPot: (uniqueid: string) => void;
 }
 
-const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
+const CompletedItems: FC<Props> = ({
+  cookedPotContent,
+  removeFromCookedPot
+}) => {
   return (
     <>
       {Object.entries(cookedPotContent).map(([key, value]) => {
@@ -21,7 +25,11 @@ const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
               <div>Finished Cooking At: {formattedTime} </div>
             </div>
 
-            <IconButton key={key} color="primary">
+            <IconButton
+              key={key}
+              color="primary"
+              onClick={() => removeFromCookedPot(value.id)}
+            >
               <RestaurantIcon fontSize="small" />
             </IconButton>
           </div>

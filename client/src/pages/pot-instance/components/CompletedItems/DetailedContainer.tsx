@@ -6,12 +6,19 @@ import styles from './styles.module.css';
 
 interface Props {
   cookedPotContent: PotContent[];
+  removeFromCookedPot: (uniqueid: string) => void;
 }
 
-const DetailedContainer: FC<Props> = ({ cookedPotContent }) => {
+const DetailedContainer: FC<Props> = ({
+  cookedPotContent,
+  removeFromCookedPot
+}) => {
   return (
     <Stack id={styles.foodTimerContainer} spacing={1}>
-      <CompletedItems cookedPotContent={cookedPotContent} />
+      <CompletedItems
+        cookedPotContent={cookedPotContent}
+        removeFromCookedPot={removeFromCookedPot}
+      />
     </Stack>
   );
 };
