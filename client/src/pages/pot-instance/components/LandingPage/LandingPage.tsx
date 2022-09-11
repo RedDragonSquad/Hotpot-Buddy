@@ -58,11 +58,13 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const theme = useTheme();
 
   const ToggleButton = styled(MuiToggleButton)({
-    '&.MuiToggleButton-root': {
-      backgroundColor: theme.customPalette.toggleButton.main
+    '&.MuiToggleButton-root, ': {
+      backgroundColor: theme.customPalette.toggleButton.main,
+      color: theme.palette.grey[200]
     },
     '&.Mui-selected, &.Mui-selected:hover': {
-      backgroundColor: theme.customPalette.toggleButton.secondary1
+      backgroundColor: theme.customPalette.toggleButton.secondary1,
+      color: theme.palette.primary.main
     }
   });
 
@@ -80,7 +82,6 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
         <div className={styles.selectItem}>
           Select Pot Type
           <ToggleButtonGroup
-            color="primary"
             exclusive
             value={potType}
             onChange={handleChange}
