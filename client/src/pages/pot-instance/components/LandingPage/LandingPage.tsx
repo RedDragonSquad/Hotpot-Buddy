@@ -41,6 +41,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     }
   };
 
+  // updates the toggle button for soup choices.
   const handleChangeSoup = (
     event: React.MouseEvent<HTMLElement>,
     type: string
