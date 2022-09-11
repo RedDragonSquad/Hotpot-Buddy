@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: rgba(20, 20, 20, 0.6);
+  background: rgba(35, 35, 35, 0.6);
   width: 75vw;
   height: 1.5em;
   font-size: 0.6em;
@@ -19,7 +19,7 @@
 }
 
 .itemName {
-  width: 5em;
+  width: 12em;
   text-align: start;
 }
 
