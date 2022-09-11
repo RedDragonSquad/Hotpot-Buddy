@@ -8,6 +8,7 @@ declare module '@mui/material/styles' {
       background: {
         main: string;
         secondary1: string;
+        secondary2: string;
       };
       toggleButton: {
         main: string;
@@ -21,6 +22,7 @@ declare module '@mui/material/styles' {
       background?: {
         main?: string;
         secondary1?: string;
+        secondary2?: string;
       };
       toggleButton?: {
         main?: string;
@@ -34,7 +36,8 @@ const theme = createTheme({
   customPalette: {
     background: {
       main: '#14141499',
-      secondary1: '#14141499'
+      secondary1: '#14141499',
+      secondary2: '#23232399'
     },
     toggleButton: {
       main: '#140C064C',
