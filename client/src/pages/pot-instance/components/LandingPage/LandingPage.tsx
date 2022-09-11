@@ -15,6 +15,9 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const [potType, setPotType] = useState('1');
   const [soupbase, setSoupbase] = useState(['bone']);
 
+  // below is required to use custom mui themes
+  const theme = useTheme();
+
   // function to update soupbase selection based on the number of pots selected
   const handlePotChange = (newAlignment: string) => {
     // queue for soupbase based on potType number
@@ -54,9 +57,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     }
   };
 
-  // style overrides for Togglebutton
-  const theme = useTheme();
-
+  // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
     '&.MuiToggleButton-root, ': {
       backgroundColor: theme.customPalette.toggleButton.main,
