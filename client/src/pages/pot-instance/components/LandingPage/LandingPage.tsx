@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, ToggleButtonGroup } from '@mui/material';
 import MuiToggleButton from '@mui/material/ToggleButton';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { FC, useState } from 'react';
 import styles from './styles.module.css';
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
@@ -55,14 +55,16 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   };
 
   // style overrides for Togglebutton
-  const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
+  const theme = useTheme();
+
+  const ToggleButton = styled(MuiToggleButton)({
     '&.MuiToggleButton-root': {
-      backgroundColor: theme.palette.grey[700]
+      backgroundColor: theme.customPalette.toggleButton.main
     },
     '&.Mui-selected, &.Mui-selected:hover': {
-      backgroundColor: theme.palette.grey[900]
+      backgroundColor: theme.customPalette.toggleButton.secondary1
     }
-  }));
+  });
 
   if (hotpotStart) {
     return <> </>;
