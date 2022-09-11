@@ -8,12 +8,12 @@ import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
-  const [hotpotStart, useHotpotStart] = useState(false);
-  const [cookedPotContent, useCookedPotContent] = useState<PotContent[]>([]);
+  const [hotpotStart, setHotpotStart] = useState(false);
+  const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
   const [soupbase, useSoupbase] = useState(['']);
 
   const startHotPot = (newSoupbase: string[]) => {
-    useHotpotStart(true);
+    setHotpotStart(true);
     const tempSoupbase = newSoupbase;
     if (tempSoupbase.length < 2) {
       tempSoupbase.push(tempSoupbase[0]);
@@ -33,7 +33,9 @@ const PotInstance: FC = () => {
   return (
     <>
       <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
-      <FoodTimerList hotpotStart={hotpotStart} addCookedPot={addCookedPot} />
+
+      <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
+
       <div>
         <img
           className={styles.leftPot}
