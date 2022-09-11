@@ -59,7 +59,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
 
   // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
-    '&.MuiToggleButton-root, ': {
+    '&.MuiToggleButton-root': {
       backgroundColor: theme.customPalette.toggleButton.main,
       color: theme.palette.grey[200]
     },
