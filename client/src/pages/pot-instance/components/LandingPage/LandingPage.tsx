@@ -101,7 +101,8 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
           Select Soupbase
           <ToggleButtonGroup
             color="secondary"
-            // exclusive is here for the onchange to return a single value rather than an array
+            // exclusive is here for the onchange to return a single value rather than an array.
+            // the single value is then processed to show the behavior we want
             exclusive
             value={soupbase}
             onChange={handleChangeSoup}
