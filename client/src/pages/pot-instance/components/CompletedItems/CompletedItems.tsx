@@ -17,6 +17,7 @@ const CompletedItems: FC<Props> = ({
   return (
     <>
       {Object.entries(cookedPotContent).map(([key, value]) => {
+        // can update date format as required
         const formattedTime = format(new Date(value.endTime * 1000), 'p');
         return (
           <div className={styles.timerComponent} key={key}>
