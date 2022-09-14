@@ -1,0 +1,26 @@
+.progressBarContainer {
+  position: relative;
+  width: 90vw;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.progressBarItem {
+  position: absolute;
+  text-align: end;
+  transition: right 1s linear;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+  margin-top: 0.75rem;
+}
