@@ -3,6 +3,7 @@ import _ from 'lodash';
 import uniqid from 'uniqid';
 import { PotContent } from 'pages/pot-instance/models';
 import { FoodTimerList, AddIngredients } from 'pages/pot-instance/components';
+import SimpleTimerView from 'pages/pot-instance/components/SimpleTimerView/SimpleTimerView';
 
 export enum PotViewState {
   Simple,
@@ -57,7 +58,7 @@ const PotView = ({ state, addToCookedPot }: Props) => {
 
     const cookedItems = _.remove(
       updatedPotContent,
-      (item) => item.timeLeft === 0
+      (item) => item.timeLeft < 0
     );
 
     // Prevent additional rerenders if items are not cooked.
@@ -83,7 +84,16 @@ const PotView = ({ state, addToCookedPot }: Props) => {
   // TODO: Remove dependency on view types and use enum for dynamic render
   switch (state) {
     case PotViewState.Simple:
-      return <div>Simple View</div>;
+      return (
+        <>
+          Simple View
+          <AddIngredients addFoodTimer={addFoodTimer} />
+          <SimpleTimerView
+            potContent={potContent}
+            setPotContent={setPotContent}
+          />
+        </>
+      );
     case PotViewState.Detailed:
       return (
         <>
