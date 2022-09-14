@@ -25,7 +25,8 @@ const PotView = ({ state, addToCookedPot }: Props) => {
       itemCategory: string,
       startTime: number,
       finishTime: number,
-      remainingTime: number
+      remainingTime: number,
+      cookTime: number
     ) => {
       const tempObj = potContent;
       let addObj = {} as PotContent;
@@ -35,7 +36,8 @@ const PotView = ({ state, addToCookedPot }: Props) => {
         category: itemCategory,
         currentTime: startTime,
         endTime: finishTime,
-        timeLeft: remainingTime
+        timeLeft: remainingTime,
+        cookTime
       };
       tempObj.push(addObj);
       tempObj.sort((a, b) => a.timeLeft - b.timeLeft);

@@ -11,6 +11,7 @@ export interface PotContent {
   currentTime: number;
   endTime: number;
   timeLeft: number;
+  cookTime: number;
 }
 
 export interface AddFoodTimer {
@@ -19,7 +20,8 @@ export interface AddFoodTimer {
     itemCategory: string,
     startTime: number,
     finishTime: number,
-    remainingTime: number
+    remainingTime: number,
+    cookTime: number
   ) => void;
 }
 
@@ -29,6 +31,7 @@ export interface HotPotDuration {
 }
 
 export interface ProgressData {
+  id: string;
   name: string;
   value: number;
   color: string;
