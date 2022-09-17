@@ -14,8 +14,10 @@ const PotInstance: FC = () => {
 
   const startHotPot = (newSoupbase: string[]) => {
     setHotpotStart(true);
+    const potImages = 2;
     const tempSoupbase = newSoupbase;
-    if (tempSoupbase.length < 2) {
+    // If there is only one flavor selected, this duplicates the soupbase so that it can render both sides of the pot
+    if (tempSoupbase.length < potImages) {
       tempSoupbase.push(tempSoupbase[0]);
     }
     useSoupbase(tempSoupbase);

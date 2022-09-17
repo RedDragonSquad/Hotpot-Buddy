@@ -3,6 +3,7 @@ import { Button, ToggleButtonGroup } from '@mui/material';
 import MuiToggleButton from '@mui/material/ToggleButton';
 import { styled, useTheme } from '@mui/material/styles';
 import { FC, useState } from 'react';
+import POT_FLAVORS from 'utils/potFlavors';
 import styles from './styles.module.css';
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
@@ -13,7 +14,7 @@ interface Props {
 
 const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const [potType, setPotType] = useState('1');
-  const [soupbase, setSoupbase] = useState(['bone']);
+  const [soupbase, setSoupbase] = useState(['Ox Bone']);
 
   // below is required to use custom mui themes
   const theme = useTheme();
@@ -46,6 +47,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
     event: React.MouseEvent<HTMLElement>,
     type: string
   ) => {
+    // if type !== null is added, it enforces that one button is selected at all times
     if (type !== null) {
       const soupbaseTemp = soupbase;
       let i = soupbaseTemp.length;
@@ -108,15 +110,17 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
             onChange={handleChangeSoup}
             className={styles.selectBrothType}
           >
-            <ToggleButton value="spicy" className={styles.soupbases}>
-              Spicy Soupbase
-            </ToggleButton>
-            <ToggleButton value="bone" className={styles.soupbases}>
-              Ox Bone Soupbase
-            </ToggleButton>
-            <ToggleButton value="tomato" className={styles.soupbases}>
-              Tomato Soupbase
-            </ToggleButton>
+            {POT_FLAVORS.map((flavor) => {
+              return (
+                <ToggleButton
+                  key={flavor}
+                  value={flavor}
+                  className={styles.soupbases}
+                >
+                  {flavor} Soupbase
+                </ToggleButton>
+              );
+            })}
           </ToggleButtonGroup>
         </div>
         <Button
