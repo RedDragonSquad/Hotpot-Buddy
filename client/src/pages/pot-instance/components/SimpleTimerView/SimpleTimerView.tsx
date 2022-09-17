@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import StackedProgressBar from 'components/StackedProgressBar';
-import FoodLegendList from 'pages/pot-instance/components/SimpleTimerView/FoodLegendList';
 import { PotContent, ProgressData } from 'pages/pot-instance/models';
 import getRGBPerCategory from 'utils/colors';
 
@@ -22,7 +21,7 @@ const SimpleTimerView = ({ potContent, setPotContent }: Props) => {
         {
           id,
           name: details.name,
-          color: outputData[id]?.color || getRGBPerCategory(),
+          color: outputData[id]?.color || getRGBPerCategory(details.category),
           value: (details.timeLeft / details.cookTime) * 100
         }
       ])
@@ -31,12 +30,7 @@ const SimpleTimerView = ({ potContent, setPotContent }: Props) => {
     setOutData(updatedData);
   }, [potContent]);
 
-  return (
-    <>
-      <StackedProgressBar data={Object.values(outputData)} />
-      <FoodLegendList colorMap={Object.values(outputData)} />
-    </>
-  );
+  return <StackedProgressBar data={Object.values(outputData)} />;
 };
 
 export default SimpleTimerView;
