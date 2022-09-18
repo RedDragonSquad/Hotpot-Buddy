@@ -55,7 +55,7 @@ const PotInstance: FC = () => {
 
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
-      <div>
+      <div className={styles.potImgContainer}>
         <img
           className={styles.leftPot}
           src={`${process.env.PUBLIC_URL}/assets/${soupbase[0]}.svg`}

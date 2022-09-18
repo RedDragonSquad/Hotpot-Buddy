@@ -6,6 +6,13 @@
   left: 47vw;
 }
 
+.potImgContainer {
+  position: absolute;
+  top: 25vh;
+  left: 20vw;
+  right: 20vw;
+}
+
 .rightPot {
   position: relative;
   right: 54px;
