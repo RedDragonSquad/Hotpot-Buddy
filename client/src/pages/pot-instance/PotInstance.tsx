@@ -8,17 +8,19 @@ import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
-  const [potType, usePotType] = useState(0);
   const [hotpotStart, setHotpotStart] = useState(false);
   const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
+  const [soupbase, useSoupbase] = useState(['']);
 
-  // functions to update the landing page
-  const updatePotType = (type: number) => {
-    usePotType(type);
-  };
-
-  const startHotPot = () => {
+  const startHotPot = (newSoupbase: string[]) => {
     setHotpotStart(true);
+    const potImages = 2;
+    const tempSoupbase = newSoupbase;
+    // If there is only one flavor selected, this duplicates the soupbase so that it can render both sides of the pot
+    if (tempSoupbase.length < potImages) {
+      tempSoupbase.push(tempSoupbase[0]);
+    }
+    useSoupbase(tempSoupbase);
   };
 
   const endHotPotSession = () => {
@@ -32,16 +34,22 @@ const PotInstance: FC = () => {
 
   return (
     <>
-      <LandingPage
-        updatePotType={updatePotType}
-        startHotPot={startHotPot}
-        hotpotStart={hotpotStart}
-      />
+      <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
 
       <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
-      <div>Pot Type: {potType} Flavor </div>
-
+      <div>
+        <img
+          className={styles.leftPot}
+          src={`${process.env.PUBLIC_URL}/assets/${soupbase[0]}.svg`}
+          alt="leftPot"
+        />
+        <img
+          className={styles.rightPot}
+          src={`${process.env.PUBLIC_URL}/assets/${soupbase[1]}.svg`}
+          alt="rightPot"
+        />
+      </div>
       <Button
         id={styles.endSession}
         variant="contained"

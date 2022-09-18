@@ -5,3 +5,20 @@
   bottom: 10px;
   left: 47vw;
 }
+
+.rightPot {
+  position: relative;
+  right: 54px;
+  transform: scaleY(-1) scaleX(-1);
+}
+
+.leftPot {
+  position: relative;
+  left: 54px;
+}
+
+.rightPot,
+.leftPot {
+  width: 300px;
+  height: auto;
+}
