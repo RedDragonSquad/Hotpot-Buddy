@@ -11,21 +11,22 @@
   top: 25vh;
   left: 20vw;
   right: 20vw;
+  background: transparent;
+  width: auto;
 }
 
 .rightPot {
-  position: relative;
   right: 54px;
   transform: scaleY(-1) scaleX(-1);
 }
 
 .leftPot {
-  position: relative;
   left: 54px;
 }
 
 .rightPot,
 .leftPot {
+  position: relative;
   width: 300px;
   height: auto;
 }

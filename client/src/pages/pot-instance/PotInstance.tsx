@@ -6,7 +6,7 @@ import PotView, {
   PotViewState
 } from 'pages/pot-instance/components/PotView/PotView';
 import { PotContent } from 'pages/pot-instance/models';
-import DetailedContainer from 'pages/pot-instance/components/CompletedItems/DetailedContainer';
+import DetailedContainer from 'pages/pot-instance/components/CompletedItems/DetailedCompletedContainer';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {

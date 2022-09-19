@@ -9,7 +9,7 @@ interface Props {
   removeFromCookedPot: (uniqueid: string) => void;
 }
 
-const DetailedContainer: FC<Props> = ({
+const DetailedCompletedContainer: FC<Props> = ({
   cookedPotContent,
   removeFromCookedPot
 }) => {
@@ -23,4 +23,4 @@ const DetailedContainer: FC<Props> = ({
   );
 };
 
-export default DetailedContainer;
+export default DetailedCompletedContainer;
