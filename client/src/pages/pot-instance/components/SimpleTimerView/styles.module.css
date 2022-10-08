@@ -1,0 +1,29 @@
+.square {
+  height: 25px;
+  width: 25px;
+  margin: 5px;
+  border: 3px solid white;
+}
+
+.legendItem {
+  display: flex;
+}
+
+.legendText {
+  display: contents;
+  border: black solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(20, 20, 20, 0.6);
+  width: 75vw;
+  height: 1.5em;
+  font-size: 0.6em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.simpleViewContainer {
+  margin: 72px 64px 0px 64px;
+}
