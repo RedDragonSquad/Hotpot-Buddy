@@ -16,7 +16,7 @@ const CATEGORY_COLORS = new Map([
     ]
   ],
   [
-    'vegatable',
+    'vegetable',
     [
       'DAF2DA',
       'B8E6B8',
@@ -86,7 +86,7 @@ const getUnknownCategoryColor = () => {
 
 // Returns a color hex based on category or random color if category is not found.
 const getRGBPerCategory = (category: string) => {
-  const colors = CATEGORY_COLORS.get(category);
+  const colors = CATEGORY_COLORS.get(category.toLowerCase());
 
   if (!colors || colors.length === 0) {
     return getUnknownCategoryColor();
