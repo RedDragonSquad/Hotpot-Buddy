@@ -33,7 +33,8 @@ const SimpleTimerView = ({ potContent, setPotContent }: Props) => {
           id,
           name: details.name,
           color: outputData[id]?.color || getRGBPerCategory(details.category),
-          value: (details.timeLeft / details.cookTime) * 100
+          value: (details.timeLeft / details.cookTime) * 100,
+          category: details.category
         }
       ])
     );

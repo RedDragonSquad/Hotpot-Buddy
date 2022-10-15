@@ -16,14 +16,21 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: rgba(20, 20, 20, 0.6);
-  width: 75vw;
+  background: rgba(35, 35, 35, 0.6);
+  min-width: 25em;
   height: 1.5em;
-  font-size: 0.6em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  font-size: 0.8em;
+  z-index: 1;
 }
 
 .simpleViewContainer {
   margin: 72px 64px 0px 64px;
+}
+
+.foodLegendList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
 }

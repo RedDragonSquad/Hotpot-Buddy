@@ -34,5 +34,6 @@ export interface ProgressData {
   id: string;
   name: string;
   value: number;
+  category: string;
   color: string;
 }
