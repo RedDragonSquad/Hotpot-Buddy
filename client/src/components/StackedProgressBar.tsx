@@ -26,13 +26,15 @@ const StackedProgressBar = ({ data, toggleModal, completedCount }: Props) => {
             />
           );
         })}
-        <div
-          id={styles.completedCount}
-          onClick={() => toggleModal(true)}
-          aria-hidden="true"
-        >
-          {completedCount}
-        </div>
+        {completedCount > 0 && (
+          <div
+            id={styles.completedCount}
+            onClick={() => toggleModal(true)}
+            aria-hidden="true"
+          >
+            {completedCount}
+          </div>
+        )}
       </div>
       <div className={styles.legend}>
         <Typography>Raw</Typography>
