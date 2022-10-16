@@ -4,16 +4,18 @@ import styles from './styles.module.css';
 
 interface Props {
   data: ProgressData[];
+  toggleModal: (isOpen: boolean) => void;
+  completedCount: number;
 }
-const WIDTH = 90;
-const StackedProgressBar = ({ data }: Props) => {
+const WIDTH = 100;
+const StackedProgressBar = ({ data, toggleModal, completedCount }: Props) => {
   return (
     <>
       <div className={styles.progressBarContainer}>
         {data.map((section) => {
           const innerStyle = {
             backgroundColor: section.color,
-            right: `${(section.value / 100) * WIDTH}vw`
+            right: `${(section.value / 100) * WIDTH}%`
           };
 
           return (
@@ -24,6 +26,13 @@ const StackedProgressBar = ({ data }: Props) => {
             />
           );
         })}
+        <div
+          id={styles.completedCount}
+          onClick={() => toggleModal(true)}
+          aria-hidden="true"
+        >
+          {completedCount}
+        </div>
       </div>
       <div className={styles.legend}>
         <Typography>Raw</Typography>

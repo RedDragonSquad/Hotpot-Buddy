@@ -11,12 +11,23 @@
   justify-content: space-between;
   align-items: center;
   background: rgba(35, 35, 35, 0.6);
-  width: 75vw;
   height: 1.5em;
   font-size: 0.6em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   z-index: 1;
+}
+
+#foodTimerContainer > .timerComponent {
+  width: 75vw;
+}
+
+#simpleCookedItems {
+  padding-top: 24px;
+}
+
+#simpleCookedItems > .timerComponent {
+  font-size: small;
 }
 
 .itemName {

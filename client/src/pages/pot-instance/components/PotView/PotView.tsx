@@ -102,6 +102,8 @@ const PotView = ({ state, addToCookedPot }: Props) => {
           <SimpleTimerView
             potContent={potContent}
             setPotContent={setPotContent}
+            cookedPotContent={cookedPotContent}
+            removeFromCookedPot={removeFromCookedPot}
           />
         </>
       );
