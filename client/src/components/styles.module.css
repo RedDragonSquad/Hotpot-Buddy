@@ -22,5 +22,5 @@
   display: flex;
   justify-content: space-between;
   width: 90vw;
-  margin-top: 0.75rem;
+  margin: 0.75rem 0;
 }

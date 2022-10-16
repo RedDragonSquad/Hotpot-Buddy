@@ -86,7 +86,6 @@ const PotView = ({ state, addToCookedPot }: Props) => {
     case PotViewState.Simple:
       return (
         <>
-          Simple View
           <AddIngredients addFoodTimer={addFoodTimer} />
           <SimpleTimerView
             potContent={potContent}

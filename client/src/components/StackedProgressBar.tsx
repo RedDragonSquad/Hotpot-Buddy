@@ -12,7 +12,7 @@ const StackedProgressBar = ({ data }: Props) => {
       <div className={styles.progressBarContainer}>
         {data.map((section) => {
           const innerStyle = {
-            'background-color': section.color,
+            backgroundColor: section.color,
             right: `${(section.value / 100) * WIDTH}vw`
           };
 
