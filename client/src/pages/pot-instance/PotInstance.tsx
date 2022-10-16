@@ -1,17 +1,14 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
-import { filter } from 'lodash';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import PotView, {
   PotViewState
 } from 'pages/pot-instance/components/PotView/PotView';
 import { PotContent } from 'pages/pot-instance/models';
-import DetailedCompletedContainer from 'pages/pot-instance/components/CompletedItems/DetailedCompletedContainer';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
   const [hotpotStart, setHotpotStart] = useState(false);
-  const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
   // used for stats, finished item tracker etc.
   const [finishedItems, setFinishedItems] = useState<PotContent[]>([]);
   const [soupbase, useSoupbase] = useState(['']);
@@ -32,28 +29,14 @@ const PotInstance: FC = () => {
   };
 
   const addToCookedPot = (foods: PotContent[]) => {
-    setCookedPotContent([...cookedPotContent, ...foods]);
     setFinishedItems([...finishedItems, ...foods]);
-  };
-
-  const removeFromCookedPot = (uniqueid: string) => {
-    const newCookedPotContent = filter(
-      cookedPotContent,
-      (item) => item.id !== uniqueid
-    );
-    setCookedPotContent(newCookedPotContent);
   };
 
   return (
     <>
       <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
 
-      <DetailedCompletedContainer
-        cookedPotContent={cookedPotContent}
-        removeFromCookedPot={removeFromCookedPot}
-      />
-
-      <PotView state={PotViewState.Simple} addToCookedPot={addToCookedPot} />
+      <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
 
       <div className={styles.potImgContainer}>
         <img

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import _ from 'lodash';
+import _, { filter } from 'lodash';
 import uniqid from 'uniqid';
 import { PotContent } from 'pages/pot-instance/models';
 import { FoodTimerList, AddIngredients } from 'pages/pot-instance/components';
 import SimpleTimerView from 'pages/pot-instance/components/SimpleTimerView/SimpleTimerView';
+import DetailedCompletedContainer from 'pages/pot-instance/components/CompletedItems/DetailedCompletedContainer';
 
 export enum PotViewState {
   Simple,
@@ -18,6 +19,7 @@ interface Props {
 // Data and timer handler for things in a pot instance.
 const PotView = ({ state, addToCookedPot }: Props) => {
   const [potContent, setPotContent] = useState<PotContent[]>([]);
+  const [cookedPotContent, setCookedPotContent] = useState<PotContent[]>([]);
 
   // function takes in the item sent by the parent when an ingredients is added to the pot and updates the foodtimerObj state
   const addFoodTimer = useCallback(
@@ -47,6 +49,15 @@ const PotView = ({ state, addToCookedPot }: Props) => {
     [potContent, setPotContent]
   );
 
+  // Handle removing cooked items from cookedPotContent
+  const removeFromCookedPot = (uniqueid: string) => {
+    const newCookedPotContent = filter(
+      cookedPotContent,
+      (item) => item.id !== uniqueid
+    );
+    setCookedPotContent(newCookedPotContent);
+  };
+
   const handleTime = () => {
     // function that handles the timer countdown for each object in foodTimerObj. timer stops when
     // the counter reaches 0. counter is read from the resulting calculation from endtime and current time
@@ -58,11 +69,12 @@ const PotView = ({ state, addToCookedPot }: Props) => {
 
     const cookedItems = _.remove(
       updatedPotContent,
-      (item) => item.timeLeft < 0
+      (item) => item.timeLeft <= 0
     );
 
     // Prevent additional rerenders if items are not cooked.
     if (cookedItems.length > 0) {
+      setCookedPotContent([...cookedPotContent, ...cookedItems]);
       addToCookedPot(cookedItems);
     }
 
@@ -97,6 +109,10 @@ const PotView = ({ state, addToCookedPot }: Props) => {
       return (
         <>
           <AddIngredients addFoodTimer={addFoodTimer} />
+          <DetailedCompletedContainer
+            cookedPotContent={cookedPotContent}
+            removeFromCookedPot={removeFromCookedPot}
+          />
           <FoodTimerList
             potContent={potContent}
             setPotContent={setPotContent}
