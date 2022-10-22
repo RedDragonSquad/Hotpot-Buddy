@@ -26,7 +26,7 @@ const FoodLegendList = ({ colorMap, removeItem }: Props) => {
               />
               {item.name}
               <IconButton
-                key={`${LEGEND_ITEM_KEY}_button ${item.id}`}
+                key={`${LEGEND_ITEM_KEY}button_ ${item.id}`}
                 color="primary"
                 onClick={() => removeItem(item.id)}
               >
