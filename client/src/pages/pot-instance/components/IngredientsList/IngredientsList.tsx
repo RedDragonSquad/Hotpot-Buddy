@@ -19,7 +19,8 @@ interface Props {
     itemCategory: string,
     startTime: number,
     finishTime: number,
-    remainingTime: number
+    remainingTime: number,
+    cookTime: number
   ) => void;
   drawerOpen: boolean;
 }
@@ -44,7 +45,8 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
         ingredient.category,
         startTime,
         finishTime,
-        remainingTime
+        remainingTime,
+        ingredient.cookTime
       );
     });
     // resets the cart
@@ -62,7 +64,8 @@ const IngredientsList: FC<Props> = ({ addFoodTimer, drawerOpen }) => {
         ingredient.category,
         currentTime,
         finishTime,
-        remainingTime
+        remainingTime,
+        ingredient.cookTime
       );
     });
     setIngredientsCart([]);
