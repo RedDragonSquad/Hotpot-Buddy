@@ -19,8 +19,12 @@
 
 .contentContainer{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 5px;
+}
+
+.subCompletedContainer{
+  width: 50%;
 }
 
 .contentItem{
