@@ -21,7 +21,13 @@ const ShowCompleted: FC<Props> = ({ cookedPotContent }) => {
         TEST SHOW BUTTON
       </Button>
       {drawerOpen ? (
-        <div className={styles.outerCompletedContainer}>
+        <div
+          className={styles.outerCompletedContainer}
+          onClick={() => toggleDrawer(false)}
+          onKeyPress={() => toggleDrawer(false)}
+          role="button"
+          tabIndex={0}
+        >
           <div className={styles.completedContainer}>
             <CompletedItems cookedPotContent={cookedPotContent} />
           </div>
