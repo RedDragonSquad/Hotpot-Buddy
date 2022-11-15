@@ -21,8 +21,10 @@ const ShowCompleted: FC<Props> = ({ cookedPotContent }) => {
         TEST SHOW BUTTON
       </Button>
       {drawerOpen ? (
-        <div className={styles.completedContainer}>
-          <CompletedItems cookedPotContent={cookedPotContent} />
+        <div className={styles.outerCompletedContainer}>
+          <div className={styles.completedContainer}>
+            <CompletedItems cookedPotContent={cookedPotContent} />
+          </div>
         </div>
       ) : null}
     </>

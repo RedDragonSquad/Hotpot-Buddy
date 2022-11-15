@@ -1,5 +1,16 @@
-.completedContainer{
+.outerCompletedContainer{
   position: absolute;
-  width: 500px;
-  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(20, 20, 20, 0.6);
+}
+
+.completedContainer{
+  padding: 2rem;
+  width: 60vw;
+  height: 60vh;
+  background: rgba(20, 20, 20, 0.6)
 }
