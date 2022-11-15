@@ -14,3 +14,20 @@
   height: 60vh;
   background: rgba(20, 20, 20, 0.6)
 }
+
+/* content */
+
+.contentContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contentItem{
+  background: #1A2027;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
