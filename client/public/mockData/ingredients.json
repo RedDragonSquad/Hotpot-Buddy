@@ -18,5 +18,10 @@
     "name": "shrimp",
     "cookTime": 15,
     "category": "seafood"
+  },
+  {
+    "name": "fast-food",
+    "cookTime": 2,
+    "category": "vegetable"
   }
 ]
