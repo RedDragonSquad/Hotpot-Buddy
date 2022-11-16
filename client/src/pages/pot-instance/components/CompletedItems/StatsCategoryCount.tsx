@@ -1,3 +1,4 @@
+import { capitalize } from 'lodash';
 import { FC } from 'react';
 
 interface CategoryCount {
@@ -13,9 +14,14 @@ interface Props {
 const StatsCategoryCount: FC<Props> = ({ categoryCount }) => {
   return (
     <>
-      <div>Meats Eaten: {categoryCount.meat}</div>
-      <div>Seafood Eaten: {categoryCount.seafood}</div>
-      <div>Vegetable Eaten: {categoryCount.vegetable}</div>
+      {Object.entries(categoryCount).map(([category, count]) => {
+        const capitalizeCategory = capitalize(category);
+        return (
+          <div key={category}>
+            {capitalizeCategory}s eaten: {count}
+          </div>
+        );
+      })}
     </>
   );
 };
