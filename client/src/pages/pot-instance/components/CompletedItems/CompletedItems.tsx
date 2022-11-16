@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
+import { countBy } from 'lodash';
 import { PotContent } from 'pages/pot-instance/models';
 import StatsCategoryCount from 'pages/pot-instance/components/CompletedItems/StatsCategoryCount';
 import styles from './styles.module.css';
@@ -19,18 +20,13 @@ const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   const [categoryCount, setCategoryCount] = useState<CategoryCount>();
 
   useEffect(() => {
-    const catCount = cookedPotContent.reduce(
-      (count: any, item) => {
-        if (!count[item.category]) {
-          count[item.category] = 0;
-        }
-        count[item.category] += 1;
-        return count;
-      },
-      { category: {} }
-    );
+    const tempArray: any = [];
+    cookedPotContent.forEach((value) => {
+      tempArray.push(value.category);
+    });
+    const count = countBy(tempArray);
 
-    setCategoryCount(catCount);
+    setCategoryCount(count);
   }, [cookedPotContent]);
 
   useEffect(() => {
@@ -39,7 +35,7 @@ const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   }, [categoryCount]);
 
   return (
-    <div className={styles.contentContainer}>
+    <div className={styles.mainContainer}>
       <div className={styles.subCompletedContainer}>
         {Object.entries(cookedPotContent).map(([key, value]) => {
           // date format 	12:00:00 AM was chosen. we can update to a custom format in the future if we choose. https://date-fns.org/v2.29.2/docs/format
