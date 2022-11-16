@@ -49,3 +49,8 @@
 .contentTitle{
   margin-bottom: 2rem;
 }
+
+.completedStatContent{
+  height: 80%;
+  width: 100%;
+}
