@@ -5,13 +5,13 @@ import styles from './styles.module.css';
 
 interface Props {
   selectedValue: PotViewState;
-  onChange: (value: keyof typeof PotViewState) => void;
+  onChange: (value: PotViewState) => void;
 }
 
 const PotViewSwitcher = ({ selectedValue, onChange }: Props) => {
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newValue: keyof typeof PotViewState
+    newValue: PotViewState
   ) => {
     if (newValue !== null) {
       onChange(newValue);

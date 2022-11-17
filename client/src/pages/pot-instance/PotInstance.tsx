@@ -43,7 +43,7 @@ const PotInstance: FC = () => {
 
       <PotViewSwitcher
         selectedValue={potViewState}
-        onChange={(value: keyof typeof PotViewState) => {
+        onChange={(value: PotViewState) => {
           setPotViewState(PotViewState[value]);
         }}
       />
