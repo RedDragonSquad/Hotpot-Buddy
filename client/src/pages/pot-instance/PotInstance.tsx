@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
-import PotView, {
-  PotViewState
-} from 'pages/pot-instance/components/PotView/PotView';
+import {
+  PotView,
+  PotViewState,
+  PotViewSwitcher
+} from 'pages/pot-instance/components/PotView';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
@@ -12,6 +14,9 @@ const PotInstance: FC = () => {
   // used for stats, finished item tracker etc.
   const [finishedItems, setFinishedItems] = useState<PotContent[]>([]);
   const [soupbase, useSoupbase] = useState(['']);
+  const [potViewState, setPotViewState] = useState<PotViewState>(
+    PotViewState.Detailed
+  );
 
   const startHotPot = (newSoupbase: string[]) => {
     setHotpotStart(true);
@@ -36,7 +41,13 @@ const PotInstance: FC = () => {
     <>
       <LandingPage startHotPot={startHotPot} hotpotStart={hotpotStart} />
 
-      <PotView state={PotViewState.Detailed} addToCookedPot={addToCookedPot} />
+      <PotViewSwitcher
+        selectedValue={potViewState}
+        onChange={(value: keyof typeof PotViewState) => {
+          setPotViewState(PotViewState[value]);
+        }}
+      />
+      <PotView state={potViewState} addToCookedPot={addToCookedPot} />
 
       <div className={styles.potImgContainer}>
         <img
