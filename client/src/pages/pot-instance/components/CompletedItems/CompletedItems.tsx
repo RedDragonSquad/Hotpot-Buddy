@@ -1,9 +1,9 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { format } from 'date-fns';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
-import { capitalize, countBy } from 'lodash';
+import { capitalize } from 'lodash';
 import { PotContent } from 'pages/pot-instance/models';
-import StatsCategoryCount from 'pages/pot-instance/components/CompletedItems/StatsCategoryCount';
+import CompletedStats from './CompletedStats/CompletedStats';
 import styles from './styles.module.css';
 
 const FOOD_EATEN = 'Food Eaten';
@@ -12,25 +12,7 @@ interface Props {
   cookedPotContent: PotContent[];
 }
 
-interface CategoryCount {
-  meat?: number;
-  vegetable?: number;
-  seafood?: number;
-}
-
 const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
-  const [categoryCount, setCategoryCount] = useState<CategoryCount>();
-
-  useEffect(() => {
-    const tempArray: any = [];
-    cookedPotContent.forEach((value) => {
-      tempArray.push(value.category);
-    });
-    const count = countBy(tempArray);
-
-    setCategoryCount(count);
-  }, [cookedPotContent]);
-
   return (
     <div className={styles.mainContainer}>
       <div className={styles.subCompletedContainer}>
@@ -50,11 +32,7 @@ const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
         </div>
       </div>
       <div className={styles.subCompletedContainer}>
-        {categoryCount !== undefined ? (
-          <StatsCategoryCount categoryCount={categoryCount} />
-        ) : (
-          <div> false </div>
-        )}
+        <CompletedStats cookedPotContent={cookedPotContent} />
       </div>
     </div>
   );

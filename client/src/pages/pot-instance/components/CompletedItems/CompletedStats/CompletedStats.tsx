@@ -1,23 +1,18 @@
-import { capitalize } from 'lodash';
 import { FC } from 'react';
 import MuiToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { styled } from '@mui/material/styles';
-import styles from './styles.module.css';
+import { PotContent } from 'pages/pot-instance/models';
+import StatsCategoryCount from './StatsCategoryCount';
+import styles from '../styles.module.css';
 
 const COUNT_OF_FOOD_EATEN = 'Count of Food Eaten';
 
-interface CategoryCount {
-  meat?: number;
-  vegetable?: number;
-  seafood?: number;
-}
-
 interface Props {
-  categoryCount: CategoryCount;
+  cookedPotContent: PotContent[];
 }
 
-const StatsCategoryCount: FC<Props> = ({ categoryCount }) => {
+const CompletedStats: FC<Props> = ({ cookedPotContent }) => {
   // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
     '&.MuiToggleButton-root': {
@@ -33,17 +28,7 @@ const StatsCategoryCount: FC<Props> = ({ categoryCount }) => {
 
   return (
     <>
-      <div className={styles.contentTitle}>{COUNT_OF_FOOD_EATEN}</div>
-      <div className={styles.completedStatContent}>
-        {Object.entries(categoryCount).map(([category, count]) => {
-          const capitalizeCategory = capitalize(category);
-          return (
-            <div key={category} className={styles.categoryEntries}>
-              {capitalizeCategory}s Eaten: {count} pieces
-            </div>
-          );
-        })}
-      </div>
+      <StatsCategoryCount cookedPotContent={cookedPotContent} />
       <div className={styles.toggleButtonGroupClass}>
         <ToggleButtonGroup
           exclusive
@@ -64,4 +49,4 @@ const StatsCategoryCount: FC<Props> = ({ categoryCount }) => {
   );
 };
 
-export default StatsCategoryCount;
+export default CompletedStats;
