@@ -54,3 +54,15 @@
   height: 80%;
   width: 100%;
 }
+
+/* Stats module */
+
+.categoryEntries{
+  font-size: 1.5rem;
+}
+
+.toggleButtonGroupClass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
