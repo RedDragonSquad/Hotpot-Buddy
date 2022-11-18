@@ -12,6 +12,8 @@ interface Props {
   cookedPotContent: PotContent[];
 }
 
+// TODO: Create switch cases and components for the different types of stats to display
+
 const CompletedStats: FC<Props> = ({ cookedPotContent }) => {
   // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
