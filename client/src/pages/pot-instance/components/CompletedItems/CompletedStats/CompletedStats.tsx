@@ -42,9 +42,9 @@ const CompletedStats: FC<Props> = ({ cookedPotContent }) => {
           <ToggleButton value={COUNT_OF_FOOD_EATEN}>
             {COUNT_OF_FOOD_EATEN}
           </ToggleButton>
-          <ToggleButton value={1}>test</ToggleButton>
+          {/* <ToggleButton value={1}>test</ToggleButton>
           <ToggleButton value={2}>test</ToggleButton>
-          <ToggleButton value={3}>test</ToggleButton>
+          <ToggleButton value={3}>test</ToggleButton> */}
         </ToggleButtonGroup>
       </div>
     </>
