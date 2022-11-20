@@ -1,0 +1,41 @@
+.progressBarContainer {
+  position: relative;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.progressBarItem {
+  position: absolute;
+  text-align: end;
+  transition: right 1s linear;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.75rem 0;
+}
+
+#completedCount {
+  position: absolute;
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: red;
+  z-index: 1;
+  right: 0vw;
+  cursor: pointer;
+
+  /* Center text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

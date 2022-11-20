@@ -59,13 +59,9 @@
   align-items: center;
   height: 3em;
   border: transparent 1px solid;
-  background: transparent;
+  background: white;
   color: white;
-  font-size: 1em;
-}
-
-.flavors:hover {
-  border: beige 1px solid;
+  font-size: 0.9rem;
 }
 
 .selectBrothType {
@@ -83,11 +79,7 @@
   border: transparent 1px solid;
   background: transparent;
   color: white;
-  font-size: 1em;
-}
-
-.soupbases:hover {
-  border: beige 1px solid;
+  font-size: 0.9rem;
 }
 
 #startHotPotBtn {
