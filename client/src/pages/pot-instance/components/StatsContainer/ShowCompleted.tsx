@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import { PotContent } from 'pages/pot-instance/models';
 import StatsContainer from 'pages/pot-instance/components/StatsContainer/StatsContainer';
 import styles from './styles.module.css';
@@ -13,13 +14,11 @@ const ShowCompleted: FC<Props> = ({ finishedItems }) => {
 
   return (
     <>
-      <Button
-        id={styles.addItemBtn}
-        variant="contained"
-        onClick={() => toggleDrawer(!drawerOpen)}
-      >
-        TEST SHOW BUTTON
-      </Button>
+      <div className={styles.statsBtn}>
+        <Button variant="contained" onClick={() => toggleDrawer(!drawerOpen)}>
+          <QueryStatsIcon />
+        </Button>
+      </div>
       {drawerOpen ? (
         <div
           className={styles.outerCompletedContainer}
