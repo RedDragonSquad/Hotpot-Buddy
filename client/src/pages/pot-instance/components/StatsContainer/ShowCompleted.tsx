@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
-import CompletedItems from 'pages/pot-instance/components/CompletedItems/CompletedItems';
+import CompletedItems from 'pages/pot-instance/components/StatsContainer/StatsContainer';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 

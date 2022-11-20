@@ -12,7 +12,7 @@ interface Props {
   cookedPotContent: PotContent[];
 }
 
-const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
+const StatsContainer: FC<Props> = ({ cookedPotContent }) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.subCompletedContainer}>
@@ -38,4 +38,4 @@ const CompletedItems: FC<Props> = ({ cookedPotContent }) => {
   );
 };
 
-export default CompletedItems;
+export default StatsContainer;
