@@ -9,16 +9,16 @@ import styles from './styles.module.css';
 const FOOD_EATEN = 'Food Eaten';
 
 interface Props {
-  cookedPotContent: PotContent[];
+  finishedItems: PotContent[];
 }
 
-const StatsContainer: FC<Props> = ({ cookedPotContent }) => {
+const StatsContainer: FC<Props> = ({ finishedItems }) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.subCompletedContainer}>
         <div className={styles.contentTitle}>{FOOD_EATEN}</div>
         <div className={styles.completedContent}>
-          {Object.entries(cookedPotContent).map(([key, value]) => {
+          {Object.entries(finishedItems).map(([key, value]) => {
             // date format 	12:00:00 AM was chosen. we can update to a custom format in the future if we choose. https://date-fns.org/v2.29.2/docs/format
             const formattedTime = format(new Date(value.endTime * 1000), 'pp');
             const capitalizeName = capitalize(value.name);
@@ -32,7 +32,7 @@ const StatsContainer: FC<Props> = ({ cookedPotContent }) => {
         </div>
       </div>
       <div className={styles.subCompletedContainer}>
-        <CompletedStats cookedPotContent={cookedPotContent} />
+        <CompletedStats finishedItems={finishedItems} />
       </div>
     </div>
   );

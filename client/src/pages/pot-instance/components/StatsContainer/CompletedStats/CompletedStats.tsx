@@ -9,12 +9,12 @@ import styles from '../styles.module.css';
 const COUNT_OF_FOOD_EATEN = 'Count of Food Eaten';
 
 interface Props {
-  cookedPotContent: PotContent[];
+  finishedItems: PotContent[];
 }
 
 // TODO: Create switch cases and components for the different types of stats to display
 
-const CompletedStats: FC<Props> = ({ cookedPotContent }) => {
+const CompletedStats: FC<Props> = ({ finishedItems }) => {
   // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
     '&.MuiToggleButton-root': {
@@ -30,7 +30,7 @@ const CompletedStats: FC<Props> = ({ cookedPotContent }) => {
 
   return (
     <>
-      <StatsCategoryCount cookedPotContent={cookedPotContent} />
+      <StatsCategoryCount finishedItems={finishedItems} />
       <div className={styles.toggleButtonGroupClass}>
         <ToggleButtonGroup
           exclusive

@@ -12,21 +12,21 @@ interface CategoryCount {
 }
 
 interface Props {
-  cookedPotContent: PotContent[];
+  finishedItems: PotContent[];
 }
 
-const StatsCategoryCount: FC<Props> = ({ cookedPotContent }) => {
+const StatsCategoryCount: FC<Props> = ({ finishedItems }) => {
   const [categoryCount, setCategoryCount] = useState<CategoryCount>();
 
   useEffect(() => {
     const tempArray: any = [];
-    cookedPotContent.forEach((value) => {
+    finishedItems.forEach((value) => {
       tempArray.push(value.category);
     });
     const count = countBy(tempArray);
 
     setCategoryCount(count);
-  }, [cookedPotContent]);
+  }, [finishedItems]);
 
   if (categoryCount === undefined) {
     return null;

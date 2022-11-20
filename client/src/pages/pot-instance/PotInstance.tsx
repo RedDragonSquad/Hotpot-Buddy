@@ -52,7 +52,7 @@ const PotInstance: FC = () => {
         />
       </div>
 
-      <ShowCompleted cookedPotContent={cookedPotContent} />
+      <ShowCompleted finishedItems={finishedItems} />
 
       <Button
         id={styles.endSession}

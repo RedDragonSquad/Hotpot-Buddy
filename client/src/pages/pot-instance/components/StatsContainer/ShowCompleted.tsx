@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
-import CompletedItems from 'pages/pot-instance/components/StatsContainer/StatsContainer';
 import { PotContent } from 'pages/pot-instance/models';
+import StatsContainer from 'pages/pot-instance/components/StatsContainer/StatsContainer';
 import styles from './styles.module.css';
 
 interface Props {
-  cookedPotContent: PotContent[];
+  finishedItems: PotContent[];
 }
 
-const ShowCompleted: FC<Props> = ({ cookedPotContent }) => {
+const ShowCompleted: FC<Props> = ({ finishedItems }) => {
   const [drawerOpen, toggleDrawer] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ const ShowCompleted: FC<Props> = ({ cookedPotContent }) => {
           tabIndex={0}
         >
           <div className={styles.completedContainer}>
-            <CompletedItems cookedPotContent={cookedPotContent} />
+            <StatsContainer finishedItems={finishedItems} />
           </div>
         </div>
       ) : null}
