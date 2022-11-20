@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
-import ShowCompleted from 'pages/pot-instance/components/StatsContainer/ShowCompleted';
+import ShowCompleted from 'pages/pot-instance/components/StatsContainer/ShowStats';
 import PotView, {
   PotViewState
 } from 'pages/pot-instance/components/PotView/PotView';
