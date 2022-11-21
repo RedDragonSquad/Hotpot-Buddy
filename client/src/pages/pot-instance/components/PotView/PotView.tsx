@@ -5,11 +5,7 @@ import { PotContent } from 'pages/pot-instance/models';
 import { FoodTimerList, AddIngredients } from 'pages/pot-instance/components';
 import SimpleTimerView from 'pages/pot-instance/components/SimpleTimerView/SimpleTimerView';
 import DetailedCompletedContainer from 'pages/pot-instance/components/CompletedItems/DetailedCompletedContainer';
-
-export enum PotViewState {
-  Simple,
-  Detailed
-}
+import PotViewState from './PotViewState';
 
 interface Props {
   state: PotViewState;
@@ -93,7 +89,6 @@ const PotView = ({ state, addToCookedPot }: Props) => {
     return () => clearInterval(timer);
   }, [handleTime, potContent]);
 
-  // TODO: Remove dependency on view types and use enum for dynamic render
   switch (state) {
     case PotViewState.Simple:
       return (
