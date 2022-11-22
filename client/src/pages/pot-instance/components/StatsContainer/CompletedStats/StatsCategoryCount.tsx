@@ -16,7 +16,7 @@ const StatsCategoryCount: FC<Props> = ({
   const [categoryCount, setCategoryCount] = useState(categoryCountInterface);
 
   useEffect(() => {
-    const count: any = _.chain(finishedItems)
+    const count: Record<string, number> = _.chain(finishedItems)
       .map((value) => value.category)
       .countBy()
       .value();
