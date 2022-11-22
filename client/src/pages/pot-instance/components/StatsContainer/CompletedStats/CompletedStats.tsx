@@ -6,15 +6,14 @@ import { PotContent } from 'pages/pot-instance/models';
 import StatsCategoryCount from './StatsCategoryCount';
 import styles from '../styles.module.css';
 
-const COUNT_OF_FOOD_EATEN = 'Count of Food Eaten';
-
 interface Props {
   finishedItems: PotContent[];
+  COUNT_OF_FOOD_EATEN: string;
 }
 
 // TODO: Create switch cases and components for the different types of stats to display
 
-const CompletedStats: FC<Props> = ({ finishedItems }) => {
+const CompletedStats: FC<Props> = ({ finishedItems, COUNT_OF_FOOD_EATEN }) => {
   // style overrides for ToggleButton
   const ToggleButton = styled(MuiToggleButton)({
     '&.MuiToggleButton-root': {

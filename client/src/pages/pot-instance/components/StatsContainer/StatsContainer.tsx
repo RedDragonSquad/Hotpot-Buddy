@@ -7,6 +7,7 @@ import CompletedStats from './CompletedStats/CompletedStats';
 import styles from './styles.module.css';
 
 const FOOD_EATEN = 'Food Eaten';
+const COUNT_OF_FOOD_EATEN = 'Count of Food Eaten';
 
 interface Props {
   finishedItems: PotContent[];
@@ -32,7 +33,10 @@ const StatsContainer: FC<Props> = ({ finishedItems }) => {
         </div>
       </div>
       <div className={styles.subCompletedContainer}>
-        <CompletedStats finishedItems={finishedItems} />
+        <CompletedStats
+          finishedItems={finishedItems}
+          COUNT_OF_FOOD_EATEN={COUNT_OF_FOOD_EATEN}
+        />
       </div>
     </div>
   );
