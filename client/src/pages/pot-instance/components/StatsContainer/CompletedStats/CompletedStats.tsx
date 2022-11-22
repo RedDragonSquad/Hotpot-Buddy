@@ -36,7 +36,8 @@ const CompletedStats: FC<Props> = ({ finishedItems }) => {
           exclusive
           value={COUNT_OF_FOOD_EATEN}
           onChange={() => {
-            return COUNT_OF_FOOD_EATEN;
+            // TODO - return clauses based on the togglebutton selections
+            return null;
           }}
         >
           <ToggleButton value={COUNT_OF_FOOD_EATEN}>
