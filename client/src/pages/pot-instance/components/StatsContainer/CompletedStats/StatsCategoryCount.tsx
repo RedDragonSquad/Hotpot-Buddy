@@ -3,27 +3,24 @@ import { FC, useState, useEffect } from 'react';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from '../styles.module.css';
 
-const COUNT_OF_FOOD_EATEN = 'Count of Food Eaten';
-
-interface CategoryCount {
-  meat?: number;
-  vegetable?: number;
-  seafood?: number;
-}
-
 interface Props {
   finishedItems: PotContent[];
+  COUNT_OF_FOOD_EATEN: string;
 }
 
-const StatsCategoryCount: FC<Props> = ({ finishedItems }) => {
-  const [categoryCount, setCategoryCount] = useState<CategoryCount>();
+const StatsCategoryCount: FC<Props> = ({
+  finishedItems,
+  COUNT_OF_FOOD_EATEN
+}) => {
+  const categoryCountInterface = {} as Record<string, number>;
+  const [categoryCount, setCategoryCount] = useState(categoryCountInterface);
 
   useEffect(() => {
     const tempArray: any = [];
     finishedItems.forEach((value) => {
       tempArray.push(value.category);
     });
-    const count = countBy(tempArray);
+    const count: Record<string, number> = countBy(tempArray);
 
     setCategoryCount(count);
   }, [finishedItems]);

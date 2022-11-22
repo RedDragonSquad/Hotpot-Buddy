@@ -29,7 +29,10 @@ const CompletedStats: FC<Props> = ({ finishedItems, COUNT_OF_FOOD_EATEN }) => {
 
   return (
     <>
-      <StatsCategoryCount finishedItems={finishedItems} />
+      <StatsCategoryCount
+        finishedItems={finishedItems}
+        COUNT_OF_FOOD_EATEN={COUNT_OF_FOOD_EATEN}
+      />
       <div className={styles.toggleButtonGroupClass}>
         <ToggleButtonGroup
           exclusive
