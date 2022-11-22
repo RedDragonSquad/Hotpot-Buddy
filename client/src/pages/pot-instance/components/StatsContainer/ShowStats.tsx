@@ -19,7 +19,7 @@ const ShowCompleted: FC<Props> = ({ finishedItems }) => {
           <QueryStatsIcon />
         </Button>
       </div>
-      {drawerOpen ? (
+      {drawerOpen && (
         <div
           className={styles.outerCompletedContainer}
           onClick={() => toggleDrawer(false)}
@@ -31,7 +31,7 @@ const ShowCompleted: FC<Props> = ({ finishedItems }) => {
             <StatsContainer finishedItems={finishedItems} />
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };
