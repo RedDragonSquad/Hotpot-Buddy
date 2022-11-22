@@ -23,7 +23,6 @@ const StatsCategoryCount: FC<Props> = ({
       })
       .countBy()
       .value();
-
     setCategoryCount(count);
   }, [finishedItems]);
 
