@@ -1,4 +1,5 @@
-import { capitalize, countBy } from 'lodash';
+// import { capitalize, countBy, chain } from 'lodash';
+import _ from 'lodash';
 import { FC, useState, useEffect } from 'react';
 import { PotContent } from 'pages/pot-instance/models';
 import styles from '../styles.module.css';
@@ -16,11 +17,12 @@ const StatsCategoryCount: FC<Props> = ({
   const [categoryCount, setCategoryCount] = useState(categoryCountInterface);
 
   useEffect(() => {
-    const tempArray: any = [];
-    finishedItems.forEach((value) => {
-      tempArray.push(value.category);
-    });
-    const count: Record<string, number> = countBy(tempArray);
+    const count: any = _.chain(finishedItems)
+      .map((value) => {
+        return value.category;
+      })
+      .countBy()
+      .value();
 
     setCategoryCount(count);
   }, [finishedItems]);
@@ -35,7 +37,7 @@ const StatsCategoryCount: FC<Props> = ({
       <div className={styles.contentTitle}>{COUNT_OF_FOOD_EATEN}</div>
       <div className={styles.completedStatContent}>
         {Object.entries(categoryCount).map(([category, count]) => {
-          const capitalizeCategory = capitalize(category);
+          const capitalizeCategory = _.capitalize(category);
           return (
             <div key={category} className={styles.categoryEntries}>
               {capitalizeCategory}s Eaten: {count} pieces
