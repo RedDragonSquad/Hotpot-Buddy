@@ -1,4 +1,3 @@
-// import { capitalize, countBy, chain } from 'lodash';
 import _ from 'lodash';
 import { FC, useState, useEffect } from 'react';
 import { PotContent } from 'pages/pot-instance/models';
