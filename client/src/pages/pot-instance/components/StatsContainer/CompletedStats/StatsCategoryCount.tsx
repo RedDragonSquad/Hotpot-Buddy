@@ -28,7 +28,6 @@ const StatsCategoryCount: FC<Props> = ({
     return null;
   }
 
-  // eslint-disable-next-line consistent-return
   return (
     <>
       <div className={styles.contentTitle}>{COUNT_OF_FOOD_EATEN}</div>
