@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
+import ShowCompleted from 'pages/pot-instance/components/StatsContainer/ShowStats';
 import {
   PotView,
   PotViewState,
@@ -61,6 +62,9 @@ const PotInstance: FC = () => {
           alt="rightPot"
         />
       </div>
+
+      <ShowCompleted finishedItems={finishedItems} />
+
       <Button
         id={styles.endSession}
         variant="contained"
