@@ -49,6 +49,7 @@
   }
 }
 
+/* mui sm breakpoint */
 @media (max-width: 600px) {
   .potImgContainer {
     top: 35vh;
