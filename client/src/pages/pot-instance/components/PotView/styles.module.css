@@ -9,3 +9,9 @@
   height: 85vh;
   overflow-y: auto;
 }
+
+#simpleContainer {
+  width: 100vw;
+  height: 85vh;
+  overflow-y: auto;
+}
