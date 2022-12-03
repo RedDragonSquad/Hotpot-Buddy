@@ -37,3 +37,8 @@ export interface ProgressData {
   category: string;
   color: string;
 }
+
+export interface PotflavorData {
+  name: string;
+  url: string;
+}
