@@ -3,18 +3,19 @@ import { Button, ToggleButtonGroup } from '@mui/material';
 import MuiToggleButton from '@mui/material/ToggleButton';
 import { styled, useTheme } from '@mui/material/styles';
 import { FC, useState } from 'react';
-import POT_FLAVORS from 'utils/potFlavors';
+import { PotflavorData } from 'pages/pot-instance/models';
+import PotFlavors from 'utils/potFlavors';
 import styles from './styles.module.css';
 // https://pngtree.com/free-backgrounds-photos/spicy-hot-pot
 
 interface Props {
-  startHotPot: (soupbase: string[]) => void;
+  startHotPot: (soupbase: PotflavorData[]) => void;
   hotpotStart: boolean;
 }
 
 const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   const [potType, setPotType] = useState('1');
-  const [soupbase, setSoupbase] = useState(['Ox Bone']);
+  const [soupbase, setSoupbase] = useState([PotFlavors.ox_bone]);
 
   // below is required to use custom mui themes
   const theme = useTheme();
@@ -45,7 +46,7 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
   // updates the toggle button for soup choices.
   const handleChangeSoup = (
     event: React.MouseEvent<HTMLElement>,
-    type: string
+    type: PotflavorData
   ) => {
     // if type !== null is added, it enforces that one button is selected at all times
     if (type !== null) {
@@ -110,14 +111,14 @@ const LandingPage: FC<Props> = ({ startHotPot, hotpotStart }) => {
             onChange={handleChangeSoup}
             className={styles.selectBrothType}
           >
-            {POT_FLAVORS.map((flavor) => {
+            {Object.entries(PotFlavors).map(([key, flavor]) => {
               return (
                 <ToggleButton
-                  key={flavor}
+                  key={key}
                   value={flavor}
                   className={styles.soupbases}
                 >
-                  {flavor} Soupbase
+                  {flavor.name} Soupbase
                 </ToggleButton>
               );
             })}

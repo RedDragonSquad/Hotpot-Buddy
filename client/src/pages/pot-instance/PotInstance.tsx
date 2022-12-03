@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import ShowCompleted from 'pages/pot-instance/components/StatsContainer/ShowStats';
@@ -7,19 +7,19 @@ import {
   PotViewState,
   PotViewSwitcher
 } from 'pages/pot-instance/components/PotView';
-import { PotContent } from 'pages/pot-instance/models';
+import { PotContent, PotflavorData } from 'pages/pot-instance/models';
 import styles from './styles.module.css';
 
 const PotInstance: FC = () => {
   const [hotpotStart, setHotpotStart] = useState(false);
   // used for stats, finished item tracker etc.
   const [finishedItems, setFinishedItems] = useState<PotContent[]>([]);
-  const [soupbase, useSoupbase] = useState(['']);
+  const [soupbase, setSoupbase] = useState<PotflavorData[]>([]);
   const [potViewState, setPotViewState] = useState<PotViewState>(
     PotViewState.Detailed
   );
 
-  const startHotPot = (newSoupbase: string[]) => {
+  const startHotPot = (newSoupbase: PotflavorData[]) => {
     setHotpotStart(true);
     const potImages = 2;
     const tempSoupbase = newSoupbase;
@@ -27,7 +27,7 @@ const PotInstance: FC = () => {
     if (tempSoupbase.length < potImages) {
       tempSoupbase.push(tempSoupbase[0]);
     }
-    useSoupbase(tempSoupbase);
+    setSoupbase(tempSoupbase);
   };
 
   const endHotPotSession = () => {
@@ -37,6 +37,10 @@ const PotInstance: FC = () => {
   const addToCookedPot = (foods: PotContent[]) => {
     setFinishedItems([...finishedItems, ...foods]);
   };
+
+  useEffect(() => {
+    console.log(soupbase);
+  }, [soupbase]);
 
   return (
     <>
@@ -50,18 +54,20 @@ const PotInstance: FC = () => {
       />
       <PotView state={potViewState} addToCookedPot={addToCookedPot} />
 
-      <div className={styles.potImgContainer}>
-        <img
-          className={styles.leftPot}
-          src={`${process.env.PUBLIC_URL}/assets/${soupbase[0]}.svg`}
-          alt="leftPot"
-        />
-        <img
-          className={styles.rightPot}
-          src={`${process.env.PUBLIC_URL}/assets/${soupbase[1]}.svg`}
-          alt="rightPot"
-        />
-      </div>
+      {soupbase.length > 0 && (
+        <div className={styles.potImgContainer}>
+          <img
+            className={styles.leftPot}
+            src={`${process.env.PUBLIC_URL}/assets/${soupbase[0].url}`}
+            alt="leftPot"
+          />
+          <img
+            className={styles.rightPot}
+            src={`${process.env.PUBLIC_URL}/assets/${soupbase[1].url}`}
+            alt="rightPot"
+          />
+        </div>
+      )}
 
       <ShowCompleted finishedItems={finishedItems} />
 
