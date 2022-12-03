@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Button } from '@mui/material';
 import LandingPage from 'pages/pot-instance/components/LandingPage/LandingPage';
 import ShowCompleted from 'pages/pot-instance/components/StatsContainer/ShowStats';
@@ -37,10 +37,6 @@ const PotInstance: FC = () => {
   const addToCookedPot = (foods: PotContent[]) => {
     setFinishedItems([...finishedItems, ...foods]);
   };
-
-  useEffect(() => {
-    console.log(soupbase);
-  }, [soupbase]);
 
   return (
     <>
