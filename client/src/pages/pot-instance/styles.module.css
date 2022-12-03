@@ -1,9 +1,10 @@
 /* FoodTimerList */
 
-#endSession {
-  position: absolute;
-  bottom: 10px;
-  left: 47vw;
+#endSessionBtnContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
 }
 
 .potImgContainer {

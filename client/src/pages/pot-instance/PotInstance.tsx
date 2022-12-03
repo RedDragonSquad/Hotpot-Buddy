@@ -65,13 +65,15 @@ const PotInstance: FC = () => {
 
       <ShowCompleted finishedItems={finishedItems} />
 
-      <Button
-        id={styles.endSession}
-        variant="contained"
-        onClick={endHotPotSession}
-      >
-        End Session
-      </Button>
+      <div id={styles.endSessionBtnContainer}>
+        <Button
+          id={styles.endSession}
+          variant="contained"
+          onClick={endHotPotSession}
+        >
+          End Session
+        </Button>
+      </div>
     </>
   );
 };
