@@ -40,3 +40,13 @@
   flex-direction: row;
   gap: 2em;
 }
+
+@media (max-width: 600px) {
+  .timerInformation {
+    gap: 0em;
+  }
+
+  .itemName {
+    width: 10em;
+  }
+}
