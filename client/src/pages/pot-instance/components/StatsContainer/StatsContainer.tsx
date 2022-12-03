@@ -25,8 +25,14 @@ const StatsContainer: FC<Props> = ({ finishedItems }) => {
             const capitalizeName = capitalize(value.name);
             return (
               <div key={key} className={styles.contentItem}>
-                {capitalizeName} <LocalDiningIcon fontSize="small" />{' '}
-                {formattedTime}
+                <span className={styles.contentSpan}>{capitalizeName}</span>
+                <span>
+                  <LocalDiningIcon
+                    className={styles.eatIcon}
+                    fontSize="small"
+                  />
+                </span>
+                <span className={styles.contentSpan}>{formattedTime}</span>
               </div>
             );
           })}
