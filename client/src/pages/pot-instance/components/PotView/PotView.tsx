@@ -6,6 +6,7 @@ import { FoodTimerList, AddIngredients } from 'pages/pot-instance/components';
 import SimpleTimerView from 'pages/pot-instance/components/SimpleTimerView/SimpleTimerView';
 import DetailedCompletedContainer from 'pages/pot-instance/components/CompletedItems/DetailedCompletedContainer';
 import PotViewState from './PotViewState';
+import styles from './styles.module.css';
 
 interface Props {
   state: PotViewState;
@@ -94,26 +95,30 @@ const PotView = ({ state, addToCookedPot }: Props) => {
       return (
         <>
           <AddIngredients addFoodTimer={addFoodTimer} />
-          <SimpleTimerView
-            potContent={potContent}
-            setPotContent={setPotContent}
-            cookedPotContent={cookedPotContent}
-            removeFromCookedPot={removeFromCookedPot}
-          />
+          <div id={styles.simpleContainer}>
+            <SimpleTimerView
+              potContent={potContent}
+              setPotContent={setPotContent}
+              cookedPotContent={cookedPotContent}
+              removeFromCookedPot={removeFromCookedPot}
+            />
+          </div>
         </>
       );
     case PotViewState.Detailed:
       return (
         <>
           <AddIngredients addFoodTimer={addFoodTimer} />
-          <DetailedCompletedContainer
-            cookedPotContent={cookedPotContent}
-            removeFromCookedPot={removeFromCookedPot}
-          />
-          <FoodTimerList
-            potContent={potContent}
-            setPotContent={setPotContent}
-          />
+          <div id={styles.detailedContainer}>
+            <DetailedCompletedContainer
+              cookedPotContent={cookedPotContent}
+              removeFromCookedPot={removeFromCookedPot}
+            />
+            <FoodTimerList
+              potContent={potContent}
+              setPotContent={setPotContent}
+            />
+          </div>
         </>
       );
     default:

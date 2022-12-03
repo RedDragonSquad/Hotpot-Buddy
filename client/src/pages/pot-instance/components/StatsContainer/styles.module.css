@@ -12,7 +12,7 @@
 .completedContainer {
   padding: 2rem;
   width: 60vw;
-  height: 60vh;
+  height: 75vh;
   background: rgba(20, 20, 20, 0.9);
   border: rgba(65, 105, 225, 0.7) solid 1px;
   box-shadow: 0px 0px 200px 1px rgba(255, 255, 222555, 0.2);
@@ -55,6 +55,10 @@
   gap: 10px;
 }
 
+.contentSpan {
+  width: 40%;
+}
+
 .contentTitle {
   margin-bottom: 2rem;
 }
@@ -74,4 +78,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .completedContainer {
+    padding: 1rem;
+    width: 75vw;
+  }
+
+  .contentItem {
+    height: 25px;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .completedStatContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .completedContent {
+    gap: 5px;
+  }
+
+  .contentTitle {
+    font-size: 1.6rem;
+  }
+
+  .categoryEntries {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .completedContainer {
+    padding: 1rem;
+    width: 85vw;
+    height: 80vh;
+  }
+
+  .eatIcon {
+    display: none;
+  }
+
+  .contentItem {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contentTitle {
+    font-size: 1rem;
+  }
+
+  .categoryEntries {
+    font-size: 0.8rem;
+  }
 }

@@ -1,9 +1,10 @@
 /* FoodTimerList */
 
-#endSession {
-  position: absolute;
-  bottom: 10px;
-  left: 47vw;
+#endSessionBtnContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
 }
 
 .potImgContainer {
@@ -16,17 +17,53 @@
 }
 
 .rightPot {
-  right: 54px;
+  right: 50px;
   transform: scaleY(-1) scaleX(-1);
 }
 
 .leftPot {
-  left: 54px;
+  left: 50px;
 }
 
 .rightPot,
 .leftPot {
   position: relative;
-  width: 300px;
+  width: 260px;
   height: auto;
+}
+
+/* mui md breakpoint */
+@media (max-width: 900px) {
+  .potImgContainer {
+    top: 30vh;
+  }
+  .rightPot,
+  .leftPot {
+    width: 175px;
+    height: auto;
+  }
+  .rightPot {
+    right: 33px;
+  }
+  .leftPot {
+    left: 33px;
+  }
+}
+
+/* mui sm breakpoint */
+@media (max-width: 600px) {
+  .potImgContainer {
+    top: 35vh;
+  }
+  .rightPot,
+  .leftPot {
+    width: 110px;
+    height: auto;
+  }
+  .rightPot {
+    right: 21px;
+  }
+  .leftPot {
+    left: 21px;
+  }
 }
