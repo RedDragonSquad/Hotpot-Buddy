@@ -1,0 +1,17 @@
+#potViewSwitcherContainer {
+  display: flex;
+  width: fit-content;
+  margin: 10px;
+}
+
+#detailedContainer {
+  width: 80vw;
+  height: 85vh;
+  overflow-y: auto;
+}
+
+#simpleContainer {
+  width: 100vw;
+  height: 85vh;
+  overflow-y: auto;
+}

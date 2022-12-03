@@ -1,22 +1,207 @@
 [
   {
-    "name": "beef",
-    "cookTime": 30,
-    "category": "meat"
-  },
-  {
-    "name": "lamb",
-    "cookTime": 50,
-    "category": "meat"
-  },
-  {
-    "name": "corn",
-    "cookTime": 100,
-    "category": "vegetable"
-  },
-  {
-    "name": "shrimp",
+    "name": "Beef Brisket",
     "cookTime": 15,
-    "category": "seafood"
+    "category": "Meat"
+  },
+  {
+    "name": "Beef Chunk",
+    "cookTime": 30,
+    "category": "Meat"
+  },
+  {
+    "name": "Beef Ball",
+    "cookTime": 120,
+    "category": "Meat"
+  },
+  {
+    "name": "Beef Tripe",
+    "cookTime": 50,
+    "category": "Meat"
+  },
+  {
+    "name": "Wagyu",
+    "cookTime": 15,
+    "category": "Meat"
+  },
+  {
+    "name": "Lamb",
+    "cookTime": 25,
+    "category": "Meat"
+  },
+  {
+    "name": "Shrimp",
+    "cookTime": 60,
+    "category": "Seafood"
+  },
+  {
+    "name": "Shrimp Paste",
+    "cookTime": 90,
+    "category": "Seafood"
+  },
+  {
+    "name": "Squid Ball",
+    "cookTime": 180,
+    "category": "Seafood"
+  },
+  {
+    "name": "Crabmeat",
+    "cookTime": 50,
+    "category": "Seafood"
+  },
+  {
+    "name": "Squid",
+    "cookTime": 45,
+    "category": "Seafood"
+  },
+  {
+    "name": "Oyster",
+    "cookTime": 120,
+    "category": "Seafood"
+  },
+  {
+    "name": "Abalone",
+    "cookTime": 90,
+    "category": "Seafood"
+  },
+  {
+    "name": "Snakehead Fish",
+    "cookTime": 60,
+    "category": "Seafood"
+  },
+  {
+    "name": "Scallop",
+    "cookTime": 30,
+    "category": "Seafood"
+  },
+  {
+    "name": "Corn",
+    "cookTime": 480,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Enoki Mushroom",
+    "cookTime": 90,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Nappa Cabbage",
+    "cookTime": 60,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Crown Daisy",
+    "cookTime": 60,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Winter Melon",
+    "cookTime": 60,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Lettuce",
+    "cookTime": 60,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Radish",
+    "cookTime": 60,
+    "category": "Vegetable"
+  },
+  {
+    "name": "King Oyster Mushroom",
+    "cookTime": 90,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Shimeji Mushroom",
+    "cookTime": 90,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Celtuce",
+    "cookTime": 90,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Spinach",
+    "cookTime": 40,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Black Fungus",
+    "cookTime": 150,
+    "category": "Vegetable"
+  },
+  {
+    "name": "Dumpling",
+    "cookTime": 500,
+    "category": "Other"
+  },
+  {
+    "name": "Fukubukuro",
+    "cookTime": 300,
+    "category": "Other"
+  },
+  {
+    "name": "Quail Egg",
+    "cookTime": 180,
+    "category": "Other"
+  },
+  {
+    "name": "Spam",
+    "cookTime": 120,
+    "category": "Other"
+  },
+  {
+    "name": "Tofu",
+    "cookTime": 60,
+    "category": "Other"
+  },
+  {
+    "name": "Deep Fried Tofu Skin",
+    "cookTime": 90,
+    "category": "Other"
+  },
+  {
+    "name": "Crispy Tofu Skin",
+    "cookTime": 90,
+    "category": "Other"
+  },
+  {
+    "name": "Deep Fried Dough",
+    "cookTime": 60,
+    "category": "Other"
+  },
+  {
+    "name": "Fish Tofu",
+    "cookTime": 60,
+    "category": "Other"
+  },
+  {
+    "name": "Dried Tofu",
+    "cookTime": 90,
+    "category": "Other"
+  },
+  {
+    "name": "Japanese Glass Noodles",
+    "cookTime": 420,
+    "category": "Other"
+  },
+  {
+    "name": "Konjac",
+    "cookTime": 300,
+    "category": "Other"
+  },
+  {
+    "name": "Udon",
+    "cookTime": 420,
+    "category": "Other"
+  },
+  {
+    "name": "Ramen",
+    "cookTime": 420,
+    "category": "Other"
   }
 ]

@@ -1,9 +1,7 @@
 /* FoodTimer */
 #foodTimerContainer {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: black solid 1px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .timerComponent {
@@ -12,16 +10,28 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: rgba(20, 20, 20, 0.6);
-  width: 75vw;
+  background: rgba(35, 35, 35, 0.6);
   height: 1.5em;
   font-size: 0.6em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  z-index: 1;
+}
+
+#foodTimerContainer > .timerComponent {
+  width: 75vw;
+}
+
+#simpleCookedItems {
+  padding-top: 24px;
+}
+
+#simpleCookedItems > .timerComponent {
+  font-size: small;
 }
 
 .itemName {
-  width: 5em;
+  width: 12em;
   text-align: start;
 }
 
@@ -31,7 +41,12 @@
   gap: 2em;
 }
 
-.removerTimer {
-  height: 1.4em;
-  width: 1em;
+@media (max-width: 600px) {
+  .timerInformation {
+    gap: 0em;
+  }
+
+  .itemName {
+    width: 10em;
+  }
 }

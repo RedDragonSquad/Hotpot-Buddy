@@ -1,5 +1,5 @@
 import { Button, Drawer } from '@mui/material';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import IngredientsList from 'pages/pot-instance/components/IngredientsList/IngredientsList';
 import { AddFoodTimer } from 'pages/pot-instance/models';
@@ -31,4 +31,4 @@ const AddIngredients = ({ addFoodTimer }: AddFoodTimer) => {
     </>
   );
 };
-export default AddIngredients;
+export default memo(AddIngredients);
